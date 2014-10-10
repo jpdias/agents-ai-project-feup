@@ -14,12 +14,12 @@ public class PingPong extends Agent {
         Connection c = null;
         try {
             Class.forName("org.sqlite.JDBC");
-            c = DriverManager.getConnection("jdbc:sqlite:askandanswer.db");
+            c = DriverManager.getConnection("jdbc:sqlite:database.db");
         } catch ( Exception e ) {
             System.err.println( e.getClass().getName() + ": " + e.getMessage() );
             System.exit(0);
         }
-        //System.out.println("Opened database successfully");
+        System.out.println("Opened database successfully");
         return c;
     }
 
@@ -74,7 +74,7 @@ public class PingPong extends Agent {
 
       // m�todo done
       public boolean done() {
-         return n==10;
+         return n==1;
       }
 
    }   // fim da classe PingPongBehaviour
