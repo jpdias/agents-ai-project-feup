@@ -5,12 +5,27 @@ import jade.domain.FIPAAgentManagement.ServiceDescription;
 import jade.domain.FIPAAgentManagement.DFAgentDescription;
 import jade.domain.DFService;
 import jade.domain.FIPAException;
+import java.sql.*;
 
 // classe do agente
 public class PingPong extends Agent {
 
-   // classe do behaviour
+    public Connection connect(){
+        Connection c = null;
+        try {
+            Class.forName("org.sqlite.JDBC");
+            c = DriverManager.getConnection("jdbc:sqlite:askandanswer.db");
+        } catch ( Exception e ) {
+            System.err.println( e.getClass().getName() + ": " + e.getMessage() );
+            System.exit(0);
+        }
+        //System.out.println("Opened database successfully");
+        return c;
+    }
+
+    // classe do behaviour
    class PingPongBehaviour extends SimpleBehaviour {
+
       private int n = 0;
 
       // construtor do behaviour
@@ -21,8 +36,31 @@ public class PingPong extends Agent {
       // m�todo action
       public void action() {
          ACLMessage msg = blockingReceive();
+
          if(msg.getPerformative() == ACLMessage.INFORM) {
             System.out.println(++n + " " + getLocalName() + ": recebi " + msg.getContent());
+            Connection db =connect();
+             Statement stmt = null;
+             try {
+                 stmt = db.createStatement();
+                 ResultSet rs = stmt.executeQuery( "SELECT * FROM Arts;" );
+                 while ( rs.next() ) {
+
+                     String[] answers = {rs.getString("A"),rs.getString("B"),rs.getString("C"),rs.getString("D")};
+                     Question question = new Question(QuestionType.ARTS,
+                             rs.getInt("ID"),
+                             rs.getString("Question"),
+                             answers,
+                             rs.getString("Answer")
+                             );
+                     System.out.println(question.toString());
+                 }
+                 rs.close();
+                 stmt.close();
+                 db.close();
+             } catch (SQLException e) {
+                 e.printStackTrace();
+             }
             // cria resposta
             ACLMessage reply = msg.createReply();
             // preenche conte�do da mensagem
@@ -44,6 +82,7 @@ public class PingPong extends Agent {
 
    // m�todo setup
    protected void setup() {
+
       String tipo = "";
       // obt�m argumentos
       Object[] args = getArguments();
