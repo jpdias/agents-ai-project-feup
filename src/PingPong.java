@@ -46,12 +46,12 @@ public class PingPong extends Agent {
                  ResultSet rs = stmt.executeQuery( "SELECT * FROM Arts;" );
                  while ( rs.next() ) {
 
-                     String[] answers = {rs.getString("A"),rs.getString("B"),rs.getString("C"),rs.getString("D")};
+                     String[] answers = {rs.getString("0"),rs.getString("1"),rs.getString("2"),rs.getString("3")};
                      Question question = new Question(QuestionType.ARTS,
                              rs.getInt("ID"),
                              rs.getString("Question"),
                              answers,
-                             rs.getString("Answer")
+                             rs.getInt("Answer")
                              );
                      System.out.println(question.toString());
                  }

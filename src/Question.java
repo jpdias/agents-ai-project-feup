@@ -35,7 +35,7 @@ public class Question {
         return solution;
     }
 
-    public Question(QuestionType type, int ID, String question, String[] answers, String solution) {
+    public Question(QuestionType type, int ID, String question, String[] answers, int solution) {
         this.type = type;
         this.ID = ID;
         this.question = question;
