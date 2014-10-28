@@ -4,18 +4,15 @@ import java.util.Arrays;
  * Created by JP on 10/10/2014.
  */
 
-enum QuestionType{
-    SPORTS,ARTS,SCIENCE,HISTORY,PEOPLE
-}
 
 public class Question {
-    private QuestionType type;
+    private String type;
     private int ID;
     private String question;
     private String[] answers;
-    private String solution;
+    private int solution;
 
-    public QuestionType getType() {
+    public String getType() {
         return type;
     }
 
@@ -31,11 +28,18 @@ public class Question {
         return answers;
     }
 
-    public String getSolution() {
+    public String makeQuestion(){
+        String temp = type + "," + question +"," + Arrays.toString(answers);
+        String replaced = temp.replace("[", "");
+        String replaced1 = replaced.replace("]", "");
+        return replaced1;
+    }
+
+    public int getSolution() {
         return solution;
     }
 
-    public Question(QuestionType type, int ID, String question, String[] answers, int solution) {
+    public Question(String type, int ID, String question, String[] answers, int solution) {
         this.type = type;
         this.ID = ID;
         this.question = question;
