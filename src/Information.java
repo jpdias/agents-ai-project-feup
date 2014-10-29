@@ -1,9 +1,11 @@
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.Random;
 
 
 public class Information{
 
-    public static String Categories[] = {"Arts","History","People","Science","Sports"};
+    public static String Categories[] = {"Arts","History","Places","Science","Sports"};
 
     public static Connection connect(){
         Connection c = null;
@@ -19,8 +21,10 @@ public class Information{
     }
 
     public static Question getQuestion(String category){
+
         Connection db =connect();
         Statement stmt = null;
+        ArrayList<Question> all = new ArrayList<Question>();
         Question temp= null;
         try {
             stmt = db.createStatement();
@@ -34,15 +38,20 @@ public class Information{
                         answers,
                         rs.getInt("Answer")
                 );
+
+                all.add(temp);
                 //System.out.println(question.toString());
             }
+
             rs.close();
             stmt.close();
             db.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return temp;
+        Random randomGenerator = new Random();
+        int index = randomGenerator.nextInt(all.size());
+        return all.get(index);
     }
 
 

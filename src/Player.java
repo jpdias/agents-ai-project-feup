@@ -21,7 +21,8 @@ class Answer extends SimpleBehaviour
 
     public void action()
     {
-        ACLMessage msg = myAgent.receive();
+
+        ACLMessage msg = myAgent.blockingReceive();
         if (msg!=null) {
             //System.out.println( " - " + myAgent.getLocalName() + " Question: " + msg.getContent());
             String[] data = msg.getContent().split(",");
@@ -29,12 +30,22 @@ class Answer extends SimpleBehaviour
             String question = data[1];
             String[] solv = {data[2],data[3],data[4],data[5]};
             int pos = 0;
+
+            ACLMessage expertop = new ACLMessage(ACLMessage.INFORM);
+            expertop.setContent(msg.getContent());
+            expertop.addReceiver(new AID( "expert1", AID.ISLOCALNAME) );
+
+            myAgent.send(expertop);
+
+            ACLMessage response =  myAgent.blockingReceive();
+            pos = Integer.parseInt(response.getContent());
+
             ACLMessage reply = msg.createReply();
             reply.setPerformative( ACLMessage.INFORM );
             reply.setContent(pos+"-"+solv[pos]);
             myAgent.send(reply);
         }
-        block();
+
     }
 
     private boolean finished = false;
