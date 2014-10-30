@@ -1,40 +1,47 @@
+import Experts.Expert;
 import jade.core.Runtime;
 import jade.core.Profile; 
 import jade.core.ProfileImpl; 
-import jade.wrapper.*; 
+import jade.wrapper.*;
+
+import java.util.ArrayList;
 
 public class Run {
+
+    public static ArrayList<Expert> experts =  new ArrayList<Expert>();
+    public static ArrayList<String> expertsName =  new ArrayList<String>();
+
 	public static void main( String arg[] ) {
 		// Get a hold on JADE runtime 
 		Runtime rt = Runtime.instance(); 
 		// Create a default profile    
-		Profile p = new ProfileImpl();     
-		// Create a new non-main container, connecting to the default 
+		Profile p = new ProfileImpl();
+		// Create a new non-main container, connecting to the default
 		// main container (i.e. on this host, port 1099) 
-		ContainerController cc = rt.createMainContainer(p); 
+		ContainerController cc = rt.createMainContainer(p);
 
         Master master = new Master();
         Player player = new Player();
-        Expert1 expert1 = new Expert1();
+        for(int i  = 0; i< 3 ;i++) {
+            experts.add(new Expert(i));
+        }
 
 		try {
 			//AgentController dummy = cc.createNewAgent("sfdds", "agents.AgvAgent", null);
 			AgentController rma = cc.createNewAgent("rma", "jade.tools.rma.rma", null);
-
 			AgentController f1 = cc.acceptNewAgent("main", master);
+			AgentController p1 = cc.acceptNewAgent("player", player);
 
-			AgentController m1 = cc.acceptNewAgent("player", player);
-			AgentController m2 = cc.acceptNewAgent("expert1", expert1);
-
-			//start agents, pops up ui
-			rma.start();
+            rma.start();
             f1.start();
-            f1.suspend();
-            m1.start();
-            m2.start();
+            p1.start();
 
-
-
+            ArrayList<AgentController> allControllers = new ArrayList<AgentController>();
+            for(int i =0 ; i< experts.size();i++) {
+                allControllers.add(cc.acceptNewAgent("expert"+i, experts.get(0)));
+                expertsName.add("expert"+i);
+                allControllers.get(i).start();
+            }
 
 			
 		} catch (StaleProxyException e) {

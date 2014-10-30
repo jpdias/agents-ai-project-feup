@@ -1,3 +1,5 @@
+package Common;
+
 import java.util.Arrays;
 
 /**
@@ -49,7 +51,7 @@ public class Question {
 
     @Override
     public String toString() {
-        return "Question{" +
+        return "Common.Question{" +
                 "type=" + type +
                 ", ID=" + ID +
                 ", question='" + question + '\'' +

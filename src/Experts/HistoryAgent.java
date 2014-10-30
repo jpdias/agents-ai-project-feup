@@ -1,0 +1,48 @@
+package Experts;
+import Common.Information;
+import Common.Question;
+import jade.core.Agent;
+import jade.core.behaviours.SimpleBehaviour;
+import jade.lang.acl.ACLMessage;
+
+import java.util.ArrayList;
+import java.util.Random;
+
+/**
+ * Created by JP on 30/10/2014.
+ */
+class HistoryAgent extends SimpleBehaviour
+{
+    public HistoryAgent(Agent a) {
+        super(a);
+    }
+
+
+    public void action()
+    {
+
+        ACLMessage msg = myAgent.blockingReceive();
+        if (msg!=null) {
+
+            String[] question =  msg.getContent().split(",");
+            ArrayList<Question> history = Information.getAllQuestion("History");
+            int sol = 0;
+            for(int i = 0; i <history.size();i++){
+               if( history.get(i).getQuestion() == question[1]){
+                   sol = history.get(i).getSolution();
+               }
+            }
+
+            ACLMessage reply = msg.createReply();
+
+            reply.setPerformative( ACLMessage.INFORM );
+            reply.setContent(Integer.toString(sol));
+            myAgent.send(reply);
+        }
+
+    }
+
+    private boolean finished = false;
+    public  boolean done() {  return finished;  }
+
+}

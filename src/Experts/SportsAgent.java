@@ -1,24 +1,17 @@
+package Experts;
+
 import jade.core.Agent;
 import jade.core.behaviours.SimpleBehaviour;
-import jade.lang.acl.*;
+import jade.lang.acl.ACLMessage;
 
 import java.util.Random;
 
 /**
- * Created by JP on 29/10/2014.
+ * Created by JP on 30/10/2014.
  */
-public class Expert1 extends Agent
+class SportsAgent extends SimpleBehaviour
 {
-
-    protected void setup()
-    {
-        addBehaviour(new RandomExpert(this));
-    }
-}
-
-class RandomExpert extends SimpleBehaviour
-{
-    public RandomExpert(Agent a) {
+    public SportsAgent(Agent a) {
         super(a);
     }
 
@@ -42,4 +35,4 @@ class RandomExpert extends SimpleBehaviour
     private boolean finished = false;
     public  boolean done() {  return finished;  }
 
-} //End class B1
+}

@@ -3,6 +3,8 @@ import jade.core.Agent;
 import jade.core.behaviours.*;
 import jade.lang.acl.*;
 
+import java.util.Random;
+
 
 public class Player extends Agent
 {
@@ -24,7 +26,7 @@ class Answer extends SimpleBehaviour
 
         ACLMessage msg = myAgent.blockingReceive();
         if (msg!=null) {
-            //System.out.println( " - " + myAgent.getLocalName() + " Question: " + msg.getContent());
+            //System.out.println( " - " + myAgent.getLocalName() + " Common.Question: " + msg.getContent());
             String[] data = msg.getContent().split(",");
             String category = data[0];
             String question = data[1];
@@ -33,7 +35,13 @@ class Answer extends SimpleBehaviour
 
             ACLMessage expertop = new ACLMessage(ACLMessage.INFORM);
             expertop.setContent(msg.getContent());
-            expertop.addReceiver(new AID( "expert1", AID.ISLOCALNAME) );
+
+            Random randomGenerator = new Random();
+            int index = randomGenerator.nextInt(Run.expertsName.size());
+            String agentname = Run.expertsName.get(index);
+
+            System.out.println(agentname);
+            expertop.addReceiver(new AID(agentname, AID.ISLOCALNAME) );
 
             myAgent.send(expertop);
 

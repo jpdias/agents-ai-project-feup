@@ -1,15 +1,32 @@
+import Common.Information;
+import Common.Question;
 import jade.core.Agent;
 import jade.core.AID;
 import jade.core.behaviours.*;
 import jade.lang.acl.*;
+
 import java.util.Random;
+import java.util.Scanner;
 
 
 public class Master extends Agent
 {
+
     protected void setup()
-    {   // First set-up answering behaviour
-        addBehaviour( new Ask( this ) );
+    {
+        System.out.println("Do you wish to start?(yes/no)");
+        Scanner a = new Scanner(System.in);
+        String b="no";
+        try {
+            b= a.nextLine();
+        }catch (Exception ex){}
+
+        if(!b.equals("yes")){
+           System.exit(0);
+        }
+
+        // First set-up answering behaviour
+        addBehaviour(new Ask(this));
     }
 }
 
@@ -32,7 +49,6 @@ class Ask extends SimpleBehaviour {
         Random randomGenerator = new Random();
         int index = randomGenerator.nextInt(Information.Categories.length);
         String cat = Information.Categories[index];
-
 
         Question current = Information.getQuestion(cat);
         ACLMessage msg;
