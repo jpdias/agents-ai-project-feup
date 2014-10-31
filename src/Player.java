@@ -17,6 +17,8 @@ public class Player extends Agent
 
 class Answer extends SimpleBehaviour
 {
+    //int agentname / category
+
     public Answer(Agent a) {
         super(a);
     }
@@ -50,7 +52,7 @@ class Answer extends SimpleBehaviour
 
             ACLMessage reply = msg.createReply();
             reply.setPerformative( ACLMessage.INFORM );
-            reply.setContent(pos+"-"+solv[pos]);
+            reply.setContent(pos+"|"+solv[pos]);
             myAgent.send(reply);
         }
 

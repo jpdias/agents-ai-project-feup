@@ -24,13 +24,15 @@ class HistoryAgent extends SimpleBehaviour
         ACLMessage msg = myAgent.blockingReceive();
         if (msg!=null) {
 
+            Random randomGenerator = new Random();
+            int sol = randomGenerator.nextInt(4);
             String[] question =  msg.getContent().split(",");
             ArrayList<Question> history = Information.getAllQuestion("History");
-            int sol = 0;
+
             for(int i = 0; i <history.size();i++){
-               if( history.get(i).getQuestion() == question[1]){
-                   sol = history.get(i).getSolution();
-               }
+                if( history.get(i).getQuestion() == question[1]){
+                    sol = history.get(i).getSolution();
+                }
             }
 
             ACLMessage reply = msg.createReply();

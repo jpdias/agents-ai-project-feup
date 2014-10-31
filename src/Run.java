@@ -20,12 +20,14 @@ public class Run {
 		// main container (i.e. on this host, port 1099) 
 		ContainerController cc = rt.createMainContainer(p);
 
-        Master master = new Master();
-        Player player = new Player();
-        for(int i  = 0; i< 3 ;i++) {
-            experts.add(new Expert(i));
-        }
 
+       // Player player = new Player();
+        for(int i  = 0; i< 6 ;i++) {
+            experts.add(new Expert(i));
+            expertsName.add("expert"+i);
+        }
+        Master master = new Master();
+        PlayerDummy player = new PlayerDummy();
 		try {
 			//AgentController dummy = cc.createNewAgent("sfdds", "agents.AgvAgent", null);
 			AgentController rma = cc.createNewAgent("rma", "jade.tools.rma.rma", null);
@@ -39,7 +41,7 @@ public class Run {
             ArrayList<AgentController> allControllers = new ArrayList<AgentController>();
             for(int i =0 ; i< experts.size();i++) {
                 allControllers.add(cc.acceptNewAgent("expert"+i, experts.get(0)));
-                expertsName.add("expert"+i);
+
                 allControllers.get(i).start();
             }
 

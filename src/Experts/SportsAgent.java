@@ -1,9 +1,12 @@
 package Experts;
 
+import Common.Information;
+import Common.Question;
 import jade.core.Agent;
 import jade.core.behaviours.SimpleBehaviour;
 import jade.lang.acl.ACLMessage;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 /**
@@ -22,11 +25,20 @@ class SportsAgent extends SimpleBehaviour
         if (msg!=null) {
 
             Random randomGenerator = new Random();
-            int answer = randomGenerator.nextInt(4);
+            int sol = randomGenerator.nextInt(4);
+            String[] question =  msg.getContent().split(",");
+            ArrayList<Question> history = Information.getAllQuestion("Sports");
+
+            for(int i = 0; i <history.size();i++){
+                if( history.get(i).getQuestion() == question[1]){
+                    sol = history.get(i).getSolution();
+                }
+            }
+
             ACLMessage reply = msg.createReply();
-            //System.out.println( " ---> " + myAgent.getLocalName() + " / Answer: " + answer);
+
             reply.setPerformative( ACLMessage.INFORM );
-            reply.setContent(Integer.toString(answer));
+            reply.setContent(Integer.toString(sol));
             myAgent.send(reply);
         }
 

@@ -11,6 +11,7 @@ import java.util.Scanner;
 
 public class Master extends Agent
 {
+    public static boolean lastQuestion= false;
 
     protected void setup()
     {
@@ -36,24 +37,23 @@ class Ask extends SimpleBehaviour {
         super(a);
     }
 
-    private int numberofquestions = 8;
+    private int numberofquestions = 80;
     private int n = 0;
     private int right=0,wrong=0;
-    private boolean lastQuestion= false;
 
 
     public void action() {
 
         //Choose random category
 
-        Random randomGenerator = new Random();
-        int index = randomGenerator.nextInt(Information.Categories.length);
-        String cat = Information.Categories[index];
+       // Random randomGenerator = new Random();
+        //int index = randomGenerator.nextInt(Information.Categories.length);
+        String cat = Information.Categories[1];
 
         Question current = Information.getQuestion(cat);
         ACLMessage msg;
         msg = new ACLMessage(ACLMessage.INFORM);
-        msg.setContent(current.makeQuestion()+","+lastQuestion);
+        msg.setContent(current.makeQuestion()+","+Master.lastQuestion);
         System.out.println("Question: "+current.makeQuestion());
         msg.addReceiver(new AID( "player", AID.ISLOCALNAME) );
         myAgent.send(msg);
@@ -61,12 +61,14 @@ class Ask extends SimpleBehaviour {
         ACLMessage response=  myAgent.blockingReceive();
         if (response!=null){
             System.out.println( "Player answer:" +  response.getContent() + " -> from: " +  response.getSender().getName() );
-            if(current.getSolution()==Integer.parseInt(response.getContent().split("-")[0])){
+            if(current.getSolution()==Integer.parseInt(response.getContent().split("|")[0])){
                 System.out.println( "---- Player is right!");
+                Master.lastQuestion = true;
                 right++;
             }
             else{
                 System.out.println( "---- Player is wrong!");
+                Master.lastQuestion = false;
                 wrong++;
             }
             n++;
