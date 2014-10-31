@@ -16,6 +16,7 @@ class infoDummy {
                 pontuation[agent][cat] = 0;
     }
     public static int lastAgent;
+    public static int lastCategory;
 }
 
 public class PlayerDummy extends Agent
@@ -77,13 +78,14 @@ class AnswerDummy extends SimpleBehaviour
             int majorpontuation = -1000;
             int currentAgent = 0;
             for(int j =0; j< Run.expertsName.size(); j++){
-                if(infoDummy.pontuation[j][cat]> majorpontuation){
-                    majorpontuation = infoDummy.pontuation[j][cat];
+                if(infoDummy.pontuation[j][infoDummy.lastCategory]> majorpontuation){
+                    majorpontuation = infoDummy.pontuation[j][infoDummy.lastCategory];
                     currentAgent = j;
                 }
             }
             String agentname = Run.expertsName.get(currentAgent);
             infoDummy.lastAgent = currentAgent;
+            infoDummy.lastCategory = cat;
 
             System.out.println(agentname);
             AID expert = new AID(agentname, AID.ISLOCALNAME);

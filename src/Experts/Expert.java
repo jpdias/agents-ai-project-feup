@@ -17,28 +17,29 @@ public class Expert extends Agent
     protected void setup()
     {
         switch (agentnumber){
+
             case 0:{
-                addBehaviour(new RandomBehavior(this));
-                break;
-            }
-            case 1:{
                 addBehaviour(new PlacesBehavior(this));
                 break;
             }
-            case 2:{
+            case 1:{
                 addBehaviour(new SportsBehavior(this));
                 break;
             }
-            case 3:{
+            case 2:{
                 addBehaviour(new ScienceBehavior(this));
                 break;
             }
-            case 4:{
+            case 3:{
                 addBehaviour(new HistoryBehavior(this));
                 break;
             }
-            case 5:{
+            case 4:{
                 addBehaviour(new ArtsBehavior(this));
+                break;
+            }
+            case 5:{
+                addBehaviour(new RandomBehavior(this));
                 break;
             }
             case 6:{

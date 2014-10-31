@@ -22,7 +22,7 @@ public class Run {
 
 
        // Player player = new Player();
-        for(int i  = 0; i< 6 ;i++) {
+        for(int i  = 0; i< 5;i++) {
             experts.add(new Expert(i));
             expertsName.add("expert"+i);
         }
