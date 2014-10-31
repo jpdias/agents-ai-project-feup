@@ -3,9 +3,7 @@ import jade.core.AID;
 import jade.core.Agent;
 import jade.core.behaviours.*;
 import jade.lang.acl.*;
-
 import java.util.Arrays;
-import java.util.Random;
 
 class infoDummy {
     public static int[][] pontuation = new int[Run.expertsName.size()][Information.Categories.length];
@@ -48,7 +46,7 @@ class AnswerDummy extends SimpleBehaviour
             System.out.println( " - " + myAgent.getLocalName() + "Question: " + msg.getContent());
             String[] data = msg.getContent().split(",");
             String category = data[0];
-            String question = data[1];
+            //String question = data[1];
             String[] solv = {data[2],data[3],data[4],data[5]};
 
             int cat = Arrays.asList(Information.Categories).indexOf(category);
@@ -66,11 +64,12 @@ class AnswerDummy extends SimpleBehaviour
                         System.out.println(Arrays.toString(arr));
                     }
                 } catch (Exception ex) {
+                    System.out.println(ex);
                 }
             }
-            int pos = 0;
+            int pos;
 
-            ACLMessage expertop = new ACLMessage(ACLMessage.INFORM);
+            ACLMessage expertop = new ACLMessage(ACLMessage.REQUEST);
             expertop.setContent(msg.getContent());
 
             //Random randomGenerator = new Random();
@@ -87,8 +86,9 @@ class AnswerDummy extends SimpleBehaviour
             infoDummy.lastAgent = currentAgent;
 
             System.out.println(agentname);
-            expertop.addReceiver(new AID(agentname, AID.ISLOCALNAME) );
-
+            AID expert = new AID(agentname, AID.ISLOCALNAME);
+            expertop.addReceiver(expert);
+            expertop.setConversationId(String.valueOf(currentAgent));
             myAgent.send(expertop);
 
             infoDummy.iteration++;

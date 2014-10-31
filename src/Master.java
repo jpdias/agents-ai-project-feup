@@ -20,7 +20,9 @@ public class Master extends Agent
         String b="no";
         try {
             b= a.nextLine();
-        }catch (Exception ex){}
+        }catch (Exception ex){
+
+        }
 
         if(!b.equals("yes")){
            System.exit(0);
@@ -37,7 +39,7 @@ class Ask extends SimpleBehaviour {
         super(a);
     }
 
-    private int numberofquestions = 2000;
+    private int numberofquestions = 100;
     private int n = 0;
     private int right=0,wrong=0;
 
@@ -52,10 +54,11 @@ class Ask extends SimpleBehaviour {
 
         Question current = Information.getQuestion(cat);
         ACLMessage msg;
-        msg = new ACLMessage(ACLMessage.INFORM);
+        msg = new ACLMessage(ACLMessage.REQUEST);
         msg.setContent(current.makeQuestion()+","+Master.lastQuestion);
         System.out.println("Question: "+current.makeQuestion());
         msg.addReceiver(new AID( "player", AID.ISLOCALNAME) );
+        msg.setConversationId("Master");
         myAgent.send(msg);
 
         ACLMessage response=  myAgent.blockingReceive();
