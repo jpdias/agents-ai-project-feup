@@ -56,9 +56,9 @@ class AnswerDummy extends SimpleBehaviour
                 if (data[6] != null) {
                     //System.out.println(cat +" - "+ infoDummy.lastAgent + " - " + infoDummy.pontuation.length);
                     if (Boolean.parseBoolean(data[6]))
-                        infoDummy.pontuation[infoDummy.lastAgent][cat] += 1;
+                        infoDummy.pontuation[infoDummy.lastAgent][infoDummy.lastCategory] += 1;
                     else
-                        infoDummy.pontuation[infoDummy.lastAgent][cat] -= 1;
+                        infoDummy.pontuation[infoDummy.lastAgent][infoDummy.lastCategory] -= 1;
                 }
                 try {
                     for (int[] arr : infoDummy.pontuation) {
@@ -78,8 +78,8 @@ class AnswerDummy extends SimpleBehaviour
             int majorpontuation = -1000;
             int currentAgent = 0;
             for(int j =0; j< Run.expertsName.size(); j++){
-                if(infoDummy.pontuation[j][infoDummy.lastCategory]> majorpontuation){
-                    majorpontuation = infoDummy.pontuation[j][infoDummy.lastCategory];
+                if(infoDummy.pontuation[j][cat]> majorpontuation){
+                    majorpontuation = infoDummy.pontuation[j][cat];
                     currentAgent = j;
                 }
             }

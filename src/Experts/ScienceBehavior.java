@@ -25,7 +25,7 @@ class ScienceBehavior extends SimpleBehaviour
         if (msg!=null) {
 
             Random randomGenerator = new Random();
-            int sol = randomGenerator.nextInt(4);
+            int sol = 3;
             String[] question =  msg.getContent().split(",");
             ArrayList<Question> history = Information.getAllQuestion("Science");
 
