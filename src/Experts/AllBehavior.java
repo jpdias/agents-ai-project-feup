@@ -1,4 +1,5 @@
 package Experts;
+
 import Common.Information;
 import Common.Question;
 import jade.core.Agent;
@@ -9,14 +10,13 @@ import java.util.ArrayList;
 import java.util.Random;
 
 /**
- * Created by JP on 30/10/2014.
+ * Created by JP on 31/10/2014.
  */
-class HistoryAgent extends SimpleBehaviour
+public class AllBehavior extends SimpleBehaviour
 {
-    public HistoryAgent(Agent a) {
+    public AllBehavior(Agent a) {
         super(a);
     }
-
 
     public void action()
     {
@@ -27,7 +27,9 @@ class HistoryAgent extends SimpleBehaviour
             Random randomGenerator = new Random();
             int sol = randomGenerator.nextInt(4);
             String[] question =  msg.getContent().split(",");
-            ArrayList<Question> history = Information.getAllQuestion("History");
+            ArrayList<Question> history = new ArrayList<Question>();
+            for(int k=0; k<Information.Categories.length;k++)
+                history.addAll(Information.getAllQuestion(Information.Categories[k]));
 
             for(int i = 0; i <history.size();i++){
                 if( history.get(i).getQuestion().equals(question[1])){

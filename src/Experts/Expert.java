@@ -18,27 +18,31 @@ public class Expert extends Agent
     {
         switch (agentnumber){
             case 0:{
-                addBehaviour(new RandomAgent(this));
+                addBehaviour(new RandomBehavior(this));
                 break;
             }
             case 1:{
-                addBehaviour(new PlacesAgent(this));
+                addBehaviour(new PlacesBehavior(this));
                 break;
             }
             case 2:{
-                addBehaviour(new SportsAgent(this));
+                addBehaviour(new SportsBehavior(this));
                 break;
             }
             case 3:{
-                addBehaviour(new ScienceAgent(this));
+                addBehaviour(new ScienceBehavior(this));
                 break;
             }
             case 4:{
-                addBehaviour(new HistoryAgent(this));
+                addBehaviour(new HistoryBehavior(this));
                 break;
             }
             case 5:{
-                addBehaviour(new ArtsAgent(this));
+                addBehaviour(new ArtsBehavior(this));
+                break;
+            }
+            case 6:{
+                addBehaviour(new AllBehavior(this));
                 break;
             }
             default:{

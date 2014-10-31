@@ -12,9 +12,9 @@ import java.util.Random;
 /**
  * Created by JP on 30/10/2014.
  */
-class SportsAgent extends SimpleBehaviour
+class SportsBehavior extends SimpleBehaviour
 {
-    public SportsAgent(Agent a) {
+    public SportsBehavior(Agent a) {
         super(a);
     }
 

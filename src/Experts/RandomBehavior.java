@@ -1,20 +1,16 @@
 package Experts;
 
-import Common.Information;
-import Common.Question;
 import jade.core.Agent;
 import jade.core.behaviours.SimpleBehaviour;
 import jade.lang.acl.ACLMessage;
-
-import java.util.ArrayList;
 import java.util.Random;
 
 /**
  * Created by JP on 30/10/2014.
  */
-class PlacesAgent extends SimpleBehaviour
+class RandomBehavior extends SimpleBehaviour
 {
-    public PlacesAgent(Agent a) {
+    public RandomBehavior(Agent a) {
         super(a);
     }
 
@@ -25,20 +21,11 @@ class PlacesAgent extends SimpleBehaviour
         if (msg!=null) {
 
             Random randomGenerator = new Random();
-            int sol = randomGenerator.nextInt(4);
-            String[] question =  msg.getContent().split(",");
-            ArrayList<Question> history = Information.getAllQuestion("Places");
-
-            for(int i = 0; i <history.size();i++){
-                if( history.get(i).getQuestion().equals(question[1])){
-                    sol = history.get(i).getSolution();
-                }
-            }
-
+            int answer = randomGenerator.nextInt(4);
             ACLMessage reply = msg.createReply();
-
+            //System.out.println( " ---> " + myAgent.getLocalName() + " / Answer: " + answer);
             reply.setPerformative( ACLMessage.INFORM );
-            reply.setContent(Integer.toString(sol));
+            reply.setContent(Integer.toString(answer));
             myAgent.send(reply);
         }
 

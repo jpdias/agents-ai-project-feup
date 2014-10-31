@@ -37,7 +37,7 @@ class Ask extends SimpleBehaviour {
         super(a);
     }
 
-    private int numberofquestions = 500;
+    private int numberofquestions = 2000;
     private int n = 0;
     private int right=0,wrong=0;
 

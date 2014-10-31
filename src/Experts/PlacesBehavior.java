@@ -12,9 +12,9 @@ import java.util.Random;
 /**
  * Created by JP on 30/10/2014.
  */
-class ScienceAgent extends SimpleBehaviour
+class PlacesBehavior extends SimpleBehaviour
 {
-    public ScienceAgent(Agent a) {
+    public PlacesBehavior(Agent a) {
         super(a);
     }
 
@@ -27,7 +27,7 @@ class ScienceAgent extends SimpleBehaviour
             Random randomGenerator = new Random();
             int sol = randomGenerator.nextInt(4);
             String[] question =  msg.getContent().split(",");
-            ArrayList<Question> history = Information.getAllQuestion("Science");
+            ArrayList<Question> history = Information.getAllQuestion("Places");
 
             for(int i = 0; i <history.size();i++){
                 if( history.get(i).getQuestion().equals(question[1])){
