@@ -8,7 +8,7 @@ import jade.core.Agent;
  */
 public class Expert extends Agent
 {
-    private static int agentnumber = 0;
+    private int agentnumber = 0;
 
     public Expert(int num) {
         agentnumber = num;

@@ -30,7 +30,7 @@ class HistoryAgent extends SimpleBehaviour
             ArrayList<Question> history = Information.getAllQuestion("History");
 
             for(int i = 0; i <history.size();i++){
-                if( history.get(i).getQuestion() == question[1]){
+                if( history.get(i).getQuestion().equals(question[1])){
                     sol = history.get(i).getSolution();
                 }
             }

@@ -37,7 +37,7 @@ class Ask extends SimpleBehaviour {
         super(a);
     }
 
-    private int numberofquestions = 80;
+    private int numberofquestions = 500;
     private int n = 0;
     private int right=0,wrong=0;
 
@@ -46,9 +46,9 @@ class Ask extends SimpleBehaviour {
 
         //Choose random category
 
-       // Random randomGenerator = new Random();
-        //int index = randomGenerator.nextInt(Information.Categories.length);
-        String cat = Information.Categories[1];
+        Random randomGenerator = new Random();
+        int index = randomGenerator.nextInt(Information.Categories.length);
+        String cat = Information.Categories[index];
 
         Question current = Information.getQuestion(cat);
         ACLMessage msg;

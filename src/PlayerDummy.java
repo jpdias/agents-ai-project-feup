@@ -3,7 +3,6 @@ import jade.core.AID;
 import jade.core.Agent;
 import jade.core.behaviours.*;
 import jade.lang.acl.*;
-import org.omg.CORBA.MARSHAL;
 
 import java.util.Arrays;
 import java.util.Random;
@@ -46,7 +45,7 @@ class AnswerDummy extends SimpleBehaviour
         ACLMessage msg = myAgent.blockingReceive();
         if (msg!=null) {
 
-            System.out.println( " - " + myAgent.getLocalName() + " Common.Question: " + msg.getContent());
+            System.out.println( " - " + myAgent.getLocalName() + "Question: " + msg.getContent());
             String[] data = msg.getContent().split(",");
             String category = data[0];
             String question = data[1];
@@ -56,7 +55,6 @@ class AnswerDummy extends SimpleBehaviour
 
             if(infoDummy.iteration!=0) {
                 if (data[6] != null) {
-
                     //System.out.println(cat +" - "+ infoDummy.lastAgent + " - " + infoDummy.pontuation.length);
                     if (Boolean.parseBoolean(data[6]))
                         infoDummy.pontuation[infoDummy.lastAgent][cat] += 1;
@@ -94,6 +92,7 @@ class AnswerDummy extends SimpleBehaviour
             myAgent.send(expertop);
 
             infoDummy.iteration++;
+
             ACLMessage response =  myAgent.blockingReceive();
             pos = Integer.parseInt(response.getContent());
 

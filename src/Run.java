@@ -26,6 +26,7 @@ public class Run {
             experts.add(new Expert(i));
             expertsName.add("expert"+i);
         }
+        System.out.println(expertsName.toString());
         Master master = new Master();
         PlayerDummy player = new PlayerDummy();
 		try {
@@ -40,7 +41,7 @@ public class Run {
 
             ArrayList<AgentController> allControllers = new ArrayList<AgentController>();
             for(int i =0 ; i< experts.size();i++) {
-                allControllers.add(cc.acceptNewAgent("expert"+i, experts.get(0)));
+                allControllers.add(cc.acceptNewAgent("expert"+i, experts.get(i)));
 
                 allControllers.get(i).start();
             }
