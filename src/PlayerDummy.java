@@ -10,7 +10,7 @@ class infoDummy {
     private static int numberOfAgents = Run.expertsName.size();
     public static int iteration = 0;
     public static void initarray(){
-        System.out.println(numberOfAgents + "*" + Information.Categories.length);
+        //System.out.println(numberOfAgents + "*" + Information.Categories.length);
         for (int agent = 0; agent < numberOfAgents; agent ++)
             for (int cat = 0; cat < Information.Categories.length; cat++)
                 pontuation[agent][cat] = 0;

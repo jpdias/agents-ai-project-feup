@@ -12,7 +12,8 @@ import java.util.Scanner;
 public class Master extends Agent
 {
     public static boolean lastQuestion= false;
-
+    public static int numberofquestions = 0;
+    public static int ncurrentquestion = 0;
     protected void setup()
     {
         System.out.println("Do you wish to start?(yes/no)");
@@ -28,6 +29,17 @@ public class Master extends Agent
            System.exit(0);
         }
 
+        System.out.println("How many questions?(>0)");
+        Scanner scn = new Scanner(System.in);
+        String number="0";
+        try {
+            number= scn.nextLine();
+        }catch (Exception ex){
+
+        }
+
+        numberofquestions = Integer.parseInt(number);
+
         // First set-up answering behaviour
         addBehaviour(new Ask(this));
     }
@@ -39,7 +51,7 @@ class Ask extends SimpleBehaviour {
         super(a);
     }
 
-    private int numberofquestions = 10000;
+    private int numberofquestions = Master.numberofquestions;
     private int n = 0;
     private int right=0,wrong=0;
 
@@ -60,7 +72,7 @@ class Ask extends SimpleBehaviour {
         msg.addReceiver(new AID( "player", AID.ISLOCALNAME) );
         msg.setConversationId("Master");
         myAgent.send(msg);
-
+        Master.ncurrentquestion++;
         ACLMessage response=  myAgent.blockingReceive();
         if (response!=null){
             System.out.println( "Player answer:" +  response.getContent() + " -> from: " +  response.getSender().getName() );

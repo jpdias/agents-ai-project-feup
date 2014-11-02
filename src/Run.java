@@ -22,11 +22,11 @@ public class Run {
 
 
        // Player player = new Player();
-        for(int i  = 0; i< 5;i++) {
+        for(int i  = 0; i< 6;i++) {
             experts.add(new Expert(i));
             expertsName.add("expert"+i);
         }
-        System.out.println(expertsName.toString());
+        //System.out.println(expertsName.toString());
         Master master = new Master();
         PlayerDummy player = new PlayerDummy();
 		try {
