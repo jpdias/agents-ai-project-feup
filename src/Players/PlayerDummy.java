@@ -1,14 +1,19 @@
+package Players;
+
 import Common.Information;
+import Common.Utilities;
 import jade.core.AID;
 import jade.core.Agent;
 import jade.core.behaviours.*;
 import jade.lang.acl.*;
 import java.util.Arrays;
+import Run.*;
 
 class infoDummy {
-    public static int[][] pontuation = new int[Run.expertsName.size()][Information.Categories.length];
-    private static int numberOfAgents = Run.expertsName.size();
+    public static int[][] pontuation = new int[Run.experts.size()][Information.Categories.length];
+    private static int numberOfAgents = Run.experts.size();
     public static int iteration = 0;
+    public static AID[] experts;
     public static void initarray(){
         //System.out.println(numberOfAgents + "*" + Information.Categories.length);
         for (int agent = 0; agent < numberOfAgents; agent ++)
@@ -19,23 +24,14 @@ class infoDummy {
     public static int lastCategory;
 }
 
-public class PlayerDummy extends Agent
-{
-    public PlayerDummy() {
-        infoDummy.initarray();
-    }
 
-    protected void setup()
-    {
-        addBehaviour(new AnswerDummy(this));
-    }
-}
-
-class AnswerDummy extends SimpleBehaviour
+class PlayerDummy extends SimpleBehaviour
 {
     //int agentname / category
-    public AnswerDummy(Agent a) {
+    public PlayerDummy(Agent a) {
         super(a);
+        infoDummy.experts=Utilities.searchDF(a,"expert");
+
     }
 
     public void action()
@@ -54,7 +50,7 @@ class AnswerDummy extends SimpleBehaviour
 
             if(infoDummy.iteration!=0) {
                 if (data[6] != null) {
-                    //System.out.println(cat +" - "+ infoDummy.lastAgent + " - " + infoDummy.pontuation.length);
+                    //System.out.println(cat +" - "+ Players.infoDummy.lastAgent + " - " + Players.infoDummy.pontuation.length);
                     if (Boolean.parseBoolean(data[6]))
                         infoDummy.pontuation[infoDummy.lastAgent][infoDummy.lastCategory] += 1;
                     else
@@ -74,16 +70,16 @@ class AnswerDummy extends SimpleBehaviour
             expertop.setContent(msg.getContent());
 
             //Random randomGenerator = new Random();
-            //int index = randomGenerator.nextInt(Run.expertsName.size());
+            //int index = randomGenerator.nextInt(Run.Run.expertsName.size());
             int majorpontuation = -1000;
             int currentAgent = 0;
-            for(int j =0; j< Run.expertsName.size(); j++){
+            for(int j =0; j< infoDummy.experts.length; j++){
                 if(infoDummy.pontuation[j][cat]> majorpontuation){
                     majorpontuation = infoDummy.pontuation[j][cat];
                     currentAgent = j;
                 }
             }
-            String agentname = Run.expertsName.get(currentAgent);
+            String agentname = infoDummy.experts[currentAgent].getLocalName();
             infoDummy.lastAgent = currentAgent;
             infoDummy.lastCategory = cat;
 

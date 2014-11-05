@@ -1,26 +1,23 @@
+package Players;
+
+import Common.Utilities;
 import jade.core.AID;
 import jade.core.Agent;
 import jade.core.behaviours.*;
 import jade.lang.acl.*;
-
 import java.util.Random;
 
 
-public class Player extends Agent
-{
 
-    protected void setup()
-    {
-        addBehaviour(new Answer(this));
-    }
-}
 
-class Answer extends SimpleBehaviour
+class PlayerRandom extends SimpleBehaviour
 {
+    private static AID[] experts;
     //int agentname / category
 
-    public Answer(Agent a) {
+    public PlayerRandom(Agent a) {
         super(a);
+        experts= Utilities.searchDF(a, "expert");
     }
 
     public void action()
@@ -39,8 +36,8 @@ class Answer extends SimpleBehaviour
             expertop.setContent(msg.getContent());
 
             Random randomGenerator = new Random();
-            int index = randomGenerator.nextInt(Run.expertsName.size());
-            String agentname = Run.expertsName.get(index);
+            int index = randomGenerator.nextInt(experts.length);
+            String agentname = experts[index].getLocalName();
 
             System.out.println(agentname);
             expertop.addReceiver(new AID(agentname, AID.ISLOCALNAME) );
@@ -61,4 +58,4 @@ class Answer extends SimpleBehaviour
     private boolean finished = false;
     public  boolean done() {  return finished;  }
 
-} //End class B1
+}

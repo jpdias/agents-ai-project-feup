@@ -1,4 +1,7 @@
+package Run;
+
 import Experts.Expert;
+import Players.*;
 import jade.core.Runtime;
 import jade.core.Profile; 
 import jade.core.ProfileImpl; 
@@ -9,7 +12,7 @@ import java.util.ArrayList;
 public class Run {
 
     public static ArrayList<Expert> experts =  new ArrayList<Expert>();
-    public static ArrayList<String> expertsName =  new ArrayList<String>();
+
 
 	public static void main( String arg[] ) {
 		// Get a hold on JADE runtime 
@@ -24,16 +27,19 @@ public class Run {
        // Player player = new Player();
         for(int i  = 0; i< 6;i++) {
             experts.add(new Expert(i));
-            expertsName.add("expert"+i);
         }
         //System.out.println(expertsName.toString());
         Master master = new Master();
-        PlayerDummy player = new PlayerDummy();
+        Player player = new Player();
+        //PlayerRandom playerRandom = new PlayerRandom();
+
 		try {
 			//AgentController dummy = cc.createNewAgent("sfdds", "agents.AgvAgent", null);
 			AgentController rma = cc.createNewAgent("rma", "jade.tools.rma.rma", null);
 			AgentController f1 = cc.acceptNewAgent("main", master);
 			AgentController p1 = cc.acceptNewAgent("player", player);
+
+            //AgentController p2 = cc.acceptNewAgent("playerRandom", player);
 
             rma.start();
             f1.start();
@@ -42,7 +48,6 @@ public class Run {
             ArrayList<AgentController> allControllers = new ArrayList<AgentController>();
             for(int i =0 ; i< experts.size();i++) {
                 allControllers.add(cc.acceptNewAgent("expert"+i, experts.get(i)));
-
                 allControllers.get(i).start();
             }
 

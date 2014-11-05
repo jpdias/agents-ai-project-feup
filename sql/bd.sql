@@ -5,7 +5,7 @@ CREATE TABLE Sports (
 	'1' TEXT  NOT NULL,
 	'2' TEXT  NOT NULL,
 	'3' TEXT  NOT NULL,
-	Answer INTEGER  NOT NULL
+	Players.Answer INTEGER  NOT NULL
 );
 
 CREATE TABLE Arts (
@@ -15,7 +15,7 @@ CREATE TABLE Arts (
 	'1' TEXT  NOT NULL,
 	'2' TEXT  NOT NULL,
 	'3' TEXT  NOT NULL,
-	Answer INTEGER  NOT NULL
+	Players.Answer INTEGER  NOT NULL
 );
 
 CREATE TABLE History (
@@ -25,7 +25,7 @@ CREATE TABLE History (
 	'1' TEXT  NOT NULL,
 	'2' TEXT  NOT NULL,
 	'3' TEXT  NOT NULL,
-	Answer INTEGER  NOT NULL
+	Players.Answer INTEGER  NOT NULL
 );
 
 CREATE TABLE Places (
@@ -35,7 +35,7 @@ CREATE TABLE Places (
 	'1' TEXT  NOT NULL,
 	'2' TEXT  NOT NULL,
 	'3' TEXT  NOT NULL,
-	Answer INTEGER  NOT NULL
+	Players.Answer INTEGER  NOT NULL
 );
 
 CREATE TABLE Science (
@@ -45,5 +45,5 @@ CREATE TABLE Science (
 	'1' TEXT  NOT NULL,
 	'2' TEXT  NOT NULL,
 	'3' TEXT  NOT NULL,
-	Answer INTEGER  NOT NULL
+	Players.Answer INTEGER  NOT NULL
 );

@@ -1,8 +1,15 @@
+package Run;
+
 import Common.Information;
 import Common.Question;
+import Common.Utilities;
 import jade.core.Agent;
 import jade.core.AID;
 import jade.core.behaviours.*;
+import jade.domain.DFService;
+import jade.domain.FIPAAgentManagement.DFAgentDescription;
+import jade.domain.FIPAAgentManagement.ServiceDescription;
+import jade.domain.FIPAException;
 import jade.lang.acl.*;
 
 import java.util.Random;
@@ -14,8 +21,10 @@ public class Master extends Agent
     public static boolean lastQuestion= false;
     public static int numberofquestions = 0;
     public static int ncurrentquestion = 0;
+    public static AID[] players;
     protected void setup()
     {
+
         System.out.println("Do you wish to start?(yes/no)");
         Scanner a = new Scanner(System.in);
         String b="no";
@@ -26,7 +35,7 @@ public class Master extends Agent
         }
 
         if(!b.equals("yes")){
-           System.exit(0);
+            System.exit(0);
         }
 
         System.out.println("How many questions?(>0)");
@@ -49,6 +58,7 @@ class Ask extends SimpleBehaviour {
 
     public Ask(Agent a) {
         super(a);
+        Master.players = Utilities.searchDF(a, "player");
     }
 
     private int numberofquestions = Master.numberofquestions;
@@ -69,8 +79,11 @@ class Ask extends SimpleBehaviour {
         msg = new ACLMessage(ACLMessage.REQUEST);
         msg.setContent(current.makeQuestion()+","+Master.lastQuestion);
         System.out.println("Question: "+current.makeQuestion());
-        msg.addReceiver(new AID( "player", AID.ISLOCALNAME) );
-        msg.setConversationId("Master");
+
+        for(int j = 0; j<Master.players.length;j++)
+            msg.addReceiver(Master.players[j]);
+
+        msg.setConversationId("Run.Master");
         myAgent.send(msg);
         Master.ncurrentquestion++;
         ACLMessage response=  myAgent.blockingReceive();
