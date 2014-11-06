@@ -27,7 +27,7 @@ class infoDummy {
 
 class PlayerDummy extends SimpleBehaviour
 {
-    //int agentname / category
+
     public PlayerDummy(Agent a) {
         super(a);
         infoDummy.experts=Utilities.searchDF(a,"expert");
