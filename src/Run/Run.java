@@ -30,7 +30,7 @@ public class Run {
         }
         //System.out.println(expertsName.toString());
         Master master = new Master();
-        Player player = new Player();
+        Player player = new Player(0);
         //PlayerRandom playerRandom = new PlayerRandom();
 
 		try {

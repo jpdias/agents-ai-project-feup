@@ -11,7 +11,10 @@ import jade.domain.FIPAException;
  */
 public class Player extends Agent
 {
-    public Player() {
+    private int playernum=0;
+
+    public Player(int playernum) {
+        this.playernum=playernum;
         infoDummy.initarray();
     }
 
@@ -29,8 +32,28 @@ public class Player extends Agent
             e.printStackTrace();
         }
 
-        addBehaviour(new PlayerDummy(this));
-        //addBehavior(new PlayerRandom(this));
+        switch(playernum){
+            case 0:
+                addBehaviour(new PlayerDummy(this));
+                break;
+            case 1:
+                addBehaviour(new PlayerRandom(this));
+                break;
+            case 2:
+                addBehaviour(new PlayerFire(this));
+                break;
+            case 3:
+                addBehaviour(new PlayerBeta(this));
+                break;
+            case 4:
+                addBehaviour(new PlayerTravos(this));
+                break;
+            case 5:
+                addBehaviour(new PlayerSinalpha(this));
+                break;
+            default:
+                break;
+        }
     }
 }
 
