@@ -40,7 +40,7 @@ class PlayerDummy extends SimpleBehaviour
         ACLMessage msg = myAgent.blockingReceive();
         if (msg!=null) {
 
-            System.out.println( " - " + myAgent.getLocalName() + "Question: " + msg.getContent());
+           // System.out.println( " - " + myAgent.getLocalName() + "Question: " + msg.getContent());
             String[] data = msg.getContent().split(",");
             String category = data[0];
             //String question = data[1];
@@ -56,13 +56,13 @@ class PlayerDummy extends SimpleBehaviour
                     else
                         infoDummy.pontuation[infoDummy.lastAgent][infoDummy.lastCategory] -= 1;
                 }
-                try {
+                /*try {
                     for (int[] arr : infoDummy.pontuation) {
                         System.out.println(Arrays.toString(arr));
                     }
                 } catch (Exception ex) {
                     System.out.println(ex);
-                }
+                }*/
             }
             int pos;
 

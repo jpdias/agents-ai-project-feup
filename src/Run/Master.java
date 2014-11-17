@@ -12,6 +12,8 @@ import jade.domain.FIPAAgentManagement.ServiceDescription;
 import jade.domain.FIPAException;
 import jade.lang.acl.*;
 
+import java.util.Enumeration;
+import java.util.Hashtable;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -21,6 +23,7 @@ public class Master extends Agent
     public static boolean lastQuestion= false;
     public static int numberofquestions = 0;
     public static int ncurrentquestion = 0;
+    public static Hashtable<AID,Integer> results = new Hashtable<AID,Integer>();
     public static AID[] players;
     protected void setup()
     {
@@ -59,6 +62,9 @@ class Ask extends SimpleBehaviour {
     public Ask(Agent a) {
         super(a);
         Master.players = Utilities.searchDF(a, "player");
+        for(int i =0;i<Master.players.length;i++){
+            Master.results.put(Master.players[i],0);
+        }
     }
 
     private int numberofquestions = Master.numberofquestions;
@@ -86,23 +92,42 @@ class Ask extends SimpleBehaviour {
         msg.setConversationId("Run.Master");
         myAgent.send(msg);
         Master.ncurrentquestion++;
-        ACLMessage response=  myAgent.blockingReceive();
-        if (response!=null){
-            System.out.println( "Player answer:" +  response.getContent() + " -> from: " +  response.getSender().getName() );
-            if(current.getSolution()==Integer.parseInt(response.getContent().split("|")[0])){
-                System.out.println( "---- Player is right!");
-                Master.lastQuestion = true;
-                right++;
+
+
+
+        //System.out.println(response);
+        //while(response)
+        int temp = 0;
+        while(true) {
+            ACLMessage response=  myAgent.blockingReceive();
+            if (response != null) {
+                System.out.println("Player answer:" + response.getContent() + " -> from: " + response.getSender().getName());
+                if (current.getSolution() == Integer.parseInt(response.getContent().split("|")[0])) {
+                    System.out.println("---- Player is right!");
+                    Master.lastQuestion = true;
+                    right++;
+                    int pnt = Master.results.get(response.getSender());
+                    Master.results.put(response.getSender(),pnt+1);
+                } else {
+                    System.out.println("---- Player is wrong!");
+                    Master.lastQuestion = false;
+                    wrong++;
+                }
+               temp++;
             }
-            else{
-                System.out.println( "---- Player is wrong!");
-                Master.lastQuestion = false;
-                wrong++;
-            }
-            n++;
+            if(temp == Master.players.length)
+                break;
+
         }
+        n++;
         if(n==numberofquestions){
-            System.out.println( "\nTotal right: " + right +"; Total wrong: "+ wrong);
+            Enumeration<AID> pl = Master.results.keys();
+            while(pl.hasMoreElements()) {
+                AID x =  pl.nextElement();
+                String str = (String)x.getLocalName();
+                int pnts =  Master.results.get(x);
+                System.out.println( str + " -> Total right: " + pnts +"; Total wrong: "+ (n-pnts) );
+            }
         }
 
     }

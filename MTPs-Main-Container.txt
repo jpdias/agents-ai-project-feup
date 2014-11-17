@@ -1,1 +1,1 @@
-http://Joao:7778/acc
+http://asus-pc:7778/acc

@@ -42,6 +42,7 @@ class PlayerRandom extends SimpleBehaviour
             System.out.println(agentname);
             expertop.addReceiver(new AID(agentname, AID.ISLOCALNAME) );
 
+            expertop.setConversationId(String.valueOf(expertop));
             myAgent.send(expertop);
 
             ACLMessage response =  myAgent.blockingReceive();
