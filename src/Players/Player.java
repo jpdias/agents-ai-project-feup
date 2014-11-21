@@ -14,12 +14,20 @@ public class Player extends Agent
     private int playernum=0;
 
     public Player(int playernum) {
-        this.playernum=playernum;
-        infoDummy.initarray();
+
+            this.playernum=playernum;
+    }
+    public Player() {
+        System.out.println("Arguments");
     }
 
     protected void setup()
     {
+        Object[] args = getArguments();
+        if(args!= null){
+            playernum=Integer.parseInt((String)args[0]);
+        }
+
         DFAgentDescription dfd = new DFAgentDescription();
         dfd.setName(getAID());
         ServiceDescription sd = new ServiceDescription();

@@ -28,18 +28,7 @@ public class Master extends Agent
     protected void setup()
     {
 
-        System.out.println("Do you wish to start?(yes/no)");
-        Scanner a = new Scanner(System.in);
-        String b="no";
-        try {
-            b= a.nextLine();
-        }catch (Exception ex){
 
-        }
-
-        if(!b.equals("yes")){
-            System.exit(0);
-        }
 
         System.out.println("How many questions?(>0)");
         Scanner scn = new Scanner(System.in);

@@ -8,6 +8,7 @@ import jade.core.ProfileImpl;
 import jade.wrapper.*;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Run {
 
@@ -43,7 +44,20 @@ public class Run {
             //AgentController p2 = cc.acceptNewAgent("playerRandom", playerRandom);
 
             rma.start();
+            System.out.println("Do you wish to start?(yes/no)");
+            Scanner a = new Scanner(System.in);
+            String b="no";
+            try {
+                b= a.nextLine();
+            }catch (Exception ex){
+
+            }
+            if(!b.equals("yes")){
+                System.exit(0);
+            }
+
             f1.start();
+
 
             ArrayList<AgentController> allControllers = new ArrayList<AgentController>();
             for(int i =0 ; i< experts.size();i++) {

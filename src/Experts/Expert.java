@@ -18,8 +18,16 @@ public class Expert extends Agent
         agentnumber = num;
     }
 
+    public Expert() {
+    }
+
     protected void setup()
     {
+        Object[] args = getArguments();
+        if(args!= null){
+            agentnumber=Integer.parseInt((String)args[0]);
+        }
+
         DFAgentDescription dfd = new DFAgentDescription();
         dfd.setName(getAID());
         ServiceDescription sd = new ServiceDescription();

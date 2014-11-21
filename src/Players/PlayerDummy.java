@@ -30,6 +30,7 @@ class PlayerDummy extends SimpleBehaviour
 
     public PlayerDummy(Agent a) {
         super(a);
+        infoDummy.initarray();
         infoDummy.experts=Utilities.searchDF(a,"expert");
 
     }
@@ -56,13 +57,13 @@ class PlayerDummy extends SimpleBehaviour
                     else
                         infoDummy.pontuation[infoDummy.lastAgent][infoDummy.lastCategory] -= 1;
                 }
-                /*try {
+                try {
                     for (int[] arr : infoDummy.pontuation) {
                         System.out.println(Arrays.toString(arr));
                     }
                 } catch (Exception ex) {
                     System.out.println(ex);
-                }*/
+                }
             }
             int pos;
 
