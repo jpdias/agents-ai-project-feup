@@ -18,7 +18,6 @@ public class Player extends Agent
             this.playernum=playernum;
     }
     public Player() {
-        System.out.println("Arguments");
     }
 
     protected void setup()

@@ -7,15 +7,16 @@ import jade.core.Agent;
 import jade.core.behaviours.*;
 import jade.lang.acl.*;
 import java.util.Arrays;
-import Run.*;
 
 class infoDummy {
-    public static int[][] pontuation = new int[Run.experts.size()][Information.Categories.length];
-    private static int numberOfAgents = Run.experts.size();
-    public static int iteration = 0;
     public static AID[] experts;
+    public static int[][] pontuation;
+    public static int iteration = 0;
+
     public static void initarray(){
-        //System.out.println(numberOfAgents + "*" + Information.Categories.length);
+        pontuation = new int[experts.length][Information.Categories.length];
+        int numberOfAgents = experts.length;
+        System.out.println(numberOfAgents + "*" + Information.Categories.length);
         for (int agent = 0; agent < numberOfAgents; agent ++)
             for (int cat = 0; cat < Information.Categories.length; cat++)
                 pontuation[agent][cat] = 0;
@@ -30,9 +31,8 @@ class PlayerDummy extends SimpleBehaviour
 
     public PlayerDummy(Agent a) {
         super(a);
-        infoDummy.initarray();
         infoDummy.experts=Utilities.searchDF(a,"expert");
-
+        infoDummy.initarray();
     }
 
     public void action()

@@ -44,6 +44,11 @@ public class Run {
             //AgentController p2 = cc.acceptNewAgent("playerRandom", playerRandom);
 
             rma.start();
+            ArrayList<AgentController> allControllers = new ArrayList<AgentController>();
+            for(int i =0 ; i< experts.size();i++) {
+                allControllers.add(cc.acceptNewAgent("expert"+i, experts.get(i)));
+                allControllers.get(i).start();
+            }
             System.out.println("Do you wish to start?(yes/no)");
             Scanner a = new Scanner(System.in);
             String b="no";
@@ -59,11 +64,7 @@ public class Run {
             f1.start();
 
 
-            ArrayList<AgentController> allControllers = new ArrayList<AgentController>();
-            for(int i =0 ; i< experts.size();i++) {
-                allControllers.add(cc.acceptNewAgent("expert"+i, experts.get(i)));
-                allControllers.get(i).start();
-            }
+
             int temp = allControllers.size();
             for(int i =0 ; i< players.size();i++) {
                 allControllers.add(cc.acceptNewAgent("player"+i, players.get(i)));
