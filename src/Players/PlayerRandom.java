@@ -32,7 +32,7 @@ class PlayerRandom extends SimpleBehaviour
             String[] solv = {data[2],data[3],data[4],data[5]};
             int pos = 0;
 
-            ACLMessage expertop = new ACLMessage(ACLMessage.INFORM);
+            ACLMessage expertop = new ACLMessage(ACLMessage.REQUEST);
             expertop.setContent(msg.getContent());
 
             Random randomGenerator = new Random();
@@ -52,6 +52,10 @@ class PlayerRandom extends SimpleBehaviour
             reply.setPerformative( ACLMessage.INFORM );
             reply.setContent(pos+"|"+solv[pos]);
             myAgent.send(reply);
+
+            ACLMessage lastQuestionSol =  myAgent.blockingReceive();
+
+            if (lastQuestionSol.getContent()!= null) {};
         }
 
     }

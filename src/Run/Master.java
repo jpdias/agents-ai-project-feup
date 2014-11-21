@@ -20,14 +20,13 @@ import java.util.Scanner;
 
 public class Master extends Agent
 {
-    public static boolean lastQuestion= false;
+
     public static int numberofquestions = 0;
     public static int ncurrentquestion = 0;
     public static Hashtable<AID,Integer> results = new Hashtable<AID,Integer>();
     public static AID[] players;
     protected void setup()
     {
-
 
 
         System.out.println("How many questions?(>0)");
@@ -58,8 +57,6 @@ class Ask extends SimpleBehaviour {
 
     private int numberofquestions = Master.numberofquestions;
     private int n = 0;
-    private int right=0,wrong=0;
-
 
     public void action() {
 
@@ -72,7 +69,7 @@ class Ask extends SimpleBehaviour {
         Question current = Information.getQuestion(cat);
         ACLMessage msg;
         msg = new ACLMessage(ACLMessage.REQUEST);
-        msg.setContent(current.makeQuestion()+","+Master.lastQuestion);
+        msg.setContent(current.makeQuestion());
         System.out.println("Question: "+current.makeQuestion());
 
         for(int j = 0; j<Master.players.length;j++)
@@ -92,15 +89,21 @@ class Ask extends SimpleBehaviour {
             if (response != null) {
                 System.out.println("Player answer:" + response.getContent() + " -> from: " + response.getSender().getName());
                 if (current.getSolution() == Integer.parseInt(response.getContent().split("|")[0])) {
-                    System.out.println("---- Player is right!");
-                    Master.lastQuestion = true;
-                    right++;
+                    System.out.println("---- Player is right! -----");
+
                     int pnt = Master.results.get(response.getSender());
                     Master.results.put(response.getSender(),pnt+1);
+                    ACLMessage reply = response.createReply();
+                    reply.setPerformative( ACLMessage.CONFIRM );
+                    reply.setContent("true");
+                    myAgent.send(reply);
                 } else {
-                    System.out.println("---- Player is wrong!");
-                    Master.lastQuestion = false;
-                    wrong++;
+                    System.out.println("---- Player is wrong! ------");
+
+                    ACLMessage reply = response.createReply();
+                    reply.setPerformative( ACLMessage.CONFIRM );
+                    reply.setContent("false");
+                    myAgent.send(reply);
                 }
                temp++;
             }

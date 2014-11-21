@@ -11,8 +11,6 @@ import java.util.Arrays;
 class infoDummy {
     public static AID[] experts;
     public static int[][] pontuation;
-    public static int iteration = 0;
-
     public static void initarray(){
         pontuation = new int[experts.length][Information.Categories.length];
         int numberOfAgents = experts.length;
@@ -21,8 +19,7 @@ class infoDummy {
             for (int cat = 0; cat < Information.Categories.length; cat++)
                 pontuation[agent][cat] = 0;
     }
-    public static int lastAgent;
-    public static int lastCategory;
+
 }
 
 
@@ -41,37 +38,21 @@ class PlayerDummy extends SimpleBehaviour
         ACLMessage msg = myAgent.blockingReceive();
         if (msg!=null) {
 
-           // System.out.println( " - " + myAgent.getLocalName() + "Question: " + msg.getContent());
+
             String[] data = msg.getContent().split(",");
             String category = data[0];
-            //String question = data[1];
+
             String[] solv = {data[2],data[3],data[4],data[5]};
 
             int cat = Arrays.asList(Information.Categories).indexOf(category);
 
-            if(infoDummy.iteration!=0) {
-                if (data[6] != null) {
-                    //System.out.println(cat +" - "+ Players.infoDummy.lastAgent + " - " + Players.infoDummy.pontuation.length);
-                    if (Boolean.parseBoolean(data[6]))
-                        infoDummy.pontuation[infoDummy.lastAgent][infoDummy.lastCategory] += 1;
-                    else
-                        infoDummy.pontuation[infoDummy.lastAgent][infoDummy.lastCategory] -= 1;
-                }
-                try {
-                    for (int[] arr : infoDummy.pontuation) {
-                        System.out.println(Arrays.toString(arr));
-                    }
-                } catch (Exception ex) {
-                    System.out.println(ex);
-                }
-            }
+
             int pos;
 
             ACLMessage expertop = new ACLMessage(ACLMessage.REQUEST);
             expertop.setContent(msg.getContent());
 
-            //Random randomGenerator = new Random();
-            //int index = randomGenerator.nextInt(Run.Run.expertsName.size());
+
             int majorpontuation = -1000;
             int currentAgent = 0;
             for(int j =0; j< infoDummy.experts.length; j++){
@@ -81,8 +62,6 @@ class PlayerDummy extends SimpleBehaviour
                 }
             }
             String agentname = infoDummy.experts[currentAgent].getLocalName();
-            infoDummy.lastAgent = currentAgent;
-            infoDummy.lastCategory = cat;
 
             System.out.println(agentname);
             AID expert = new AID(agentname, AID.ISLOCALNAME);
@@ -90,7 +69,6 @@ class PlayerDummy extends SimpleBehaviour
             expertop.setConversationId(String.valueOf(currentAgent));
             myAgent.send(expertop);
 
-            infoDummy.iteration++;
 
             ACLMessage response =  myAgent.blockingReceive();
             pos = Integer.parseInt(response.getContent());
@@ -99,6 +77,27 @@ class PlayerDummy extends SimpleBehaviour
             reply.setPerformative( ACLMessage.INFORM );
             reply.setContent(pos+"|"+solv[pos]);
             myAgent.send(reply);
+
+            ACLMessage lastQuestionSol =  myAgent.blockingReceive();
+
+            if (lastQuestionSol.getContent()!= null) {
+                System.out.println();
+                if (lastQuestionSol.getContent().equals("true")){
+
+                    infoDummy.pontuation[currentAgent][cat] += 1;
+                }
+                else
+                    infoDummy.pontuation[currentAgent][cat] -= 1;
+            }
+           /* try {
+                for (int[] arr : infoDummy.pontuation) {
+                    System.out.println(Arrays.toString(arr));
+                }
+            } catch (Exception ex) {
+                System.out.println(ex);
+            }*/
+
+
         }
 
     }

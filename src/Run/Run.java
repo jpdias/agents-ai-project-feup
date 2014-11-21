@@ -26,11 +26,12 @@ public class Run {
 
 
        // Player player = new Player();
-        for(int i  = 0; i< 6;i++) {
+        for(int i  = 1; i< 6;i++) {
             experts.add(new Expert(i));
         }
         //System.out.println(expertsName.toString());
         Master master = new Master();
+
         for(int i  = 0; i< 2;i++) {
             players.add(new Player(i));
         }
