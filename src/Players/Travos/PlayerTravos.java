@@ -1,4 +1,4 @@
-package Players;
+package Players.Travos;
 
 import jade.core.Agent;
 import jade.core.behaviours.SimpleBehaviour;
@@ -6,9 +6,9 @@ import jade.core.behaviours.SimpleBehaviour;
 /**
  * Created by João on 06/11/2014.
  */
-public class PlayerFire extends SimpleBehaviour {
+public class PlayerTravos extends SimpleBehaviour {
 
-    public PlayerFire(Agent a) {
+    public PlayerTravos(Agent a) {
         super(a);
     }
 

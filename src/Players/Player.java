@@ -1,5 +1,7 @@
 package Players;
 
+import Players.Beta.PlayerBeta;
+import Players.Travos.PlayerTravos;
 import jade.core.Agent;
 import jade.domain.DFService;
 import jade.domain.FIPAAgentManagement.DFAgentDescription;
@@ -47,16 +49,10 @@ public class Player extends Agent
                 addBehaviour(new PlayerRandom(this));
                 break;
             case 2:
-                addBehaviour(new PlayerFire(this));
-                break;
-            case 3:
                 addBehaviour(new PlayerBeta(this));
                 break;
-            case 4:
+            case 3:
                 addBehaviour(new PlayerTravos(this));
-                break;
-            case 5:
-                addBehaviour(new PlayerSinalpha(this));
                 break;
             default:
                 break;

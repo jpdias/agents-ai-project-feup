@@ -1,4 +1,4 @@
-package Players;
+package Players.Beta;
 
 import jade.core.Agent;
 import jade.core.behaviours.SimpleBehaviour;
