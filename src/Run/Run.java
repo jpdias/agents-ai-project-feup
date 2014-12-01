@@ -68,6 +68,7 @@ public class Run {
             allControllers.add(cc.acceptNewAgent("FIRE", new Player(3)));
             allControllers.add(cc.acceptNewAgent("DUMMY", new Player(0)));
             allControllers.add(cc.acceptNewAgent("RANDOM", new Player(1)));
+            allControllers.add(cc.acceptNewAgent("BETA", new Player(2)));
 
             int temp = allControllers.size();
 
