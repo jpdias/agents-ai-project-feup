@@ -61,9 +61,9 @@ class PlayerDummy extends SimpleBehaviour
                     currentAgent = j;
                 }
             }
-            String agentname = infoDummy.experts[currentAgent].getLocalName();
+            String agentname = infoDummy.experts[currentAgent].getLocalName();//selected expert
 
-            System.out.println(agentname);
+            //System.out.println(agentname);
             AID expert = new AID(agentname, AID.ISLOCALNAME);
             expertop.addReceiver(expert);
             expertop.setConversationId(String.valueOf(currentAgent));
@@ -81,7 +81,6 @@ class PlayerDummy extends SimpleBehaviour
             ACLMessage lastQuestionSol =  myAgent.blockingReceive();
 
             if (lastQuestionSol.getContent()!= null) {
-                System.out.println();
                 if (lastQuestionSol.getContent().equals("true")){
 
                     infoDummy.pontuation[currentAgent][cat] += 1;
@@ -89,15 +88,6 @@ class PlayerDummy extends SimpleBehaviour
                 else
                     infoDummy.pontuation[currentAgent][cat] -= 1;
             }
-           /* try {
-                for (int[] arr : infoDummy.pontuation) {
-                    System.out.println(Arrays.toString(arr));
-                }
-            } catch (Exception ex) {
-                System.out.println(ex);
-            }*/
-
-
         }
 
     }

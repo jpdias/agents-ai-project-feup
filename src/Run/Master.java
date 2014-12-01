@@ -6,10 +6,6 @@ import Common.Utilities;
 import jade.core.Agent;
 import jade.core.AID;
 import jade.core.behaviours.*;
-import jade.domain.DFService;
-import jade.domain.FIPAAgentManagement.DFAgentDescription;
-import jade.domain.FIPAAgentManagement.ServiceDescription;
-import jade.domain.FIPAException;
 import jade.lang.acl.*;
 
 import java.util.Enumeration;
@@ -35,7 +31,7 @@ public class Master extends Agent
         try {
             number= scn.nextLine();
         }catch (Exception ex){
-
+            System.out.println("NaN");
         }
 
         numberofquestions = Integer.parseInt(number);
@@ -90,7 +86,6 @@ class Ask extends SimpleBehaviour {
                 System.out.println("Player answer:" + response.getContent() + " -> from: " + response.getSender().getName());
                 if (current.getSolution() == Integer.parseInt(response.getContent().split("|")[0])) {
                     System.out.println("---- Player is right! -----");
-
                     int pnt = Master.results.get(response.getSender());
                     Master.results.put(response.getSender(),pnt+1);
                     ACLMessage reply = response.createReply();
@@ -116,7 +111,7 @@ class Ask extends SimpleBehaviour {
             Enumeration<AID> pl = Master.results.keys();
             while(pl.hasMoreElements()) {
                 AID x =  pl.nextElement();
-                String str = (String)x.getLocalName();
+                String str = x.getLocalName();
                 int pnts =  Master.results.get(x);
                 System.out.println( str + " -> Total right: " + pnts +"; Total wrong: "+ (n-pnts) );
             }

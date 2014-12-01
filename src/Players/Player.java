@@ -1,16 +1,14 @@
 package Players;
 
 import Players.Beta.PlayerBeta;
-import Players.Travos.PlayerTravos;
+import Players.FIRE.PlayerFIRE;
+import Players.FIRE.PlayerFIRExperience;
 import jade.core.Agent;
 import jade.domain.DFService;
 import jade.domain.FIPAAgentManagement.DFAgentDescription;
 import jade.domain.FIPAAgentManagement.ServiceDescription;
 import jade.domain.FIPAException;
 
-/**
- * Created by JP on 05/11/2014.
- */
 public class Player extends Agent
 {
     private int playernum=0;
@@ -52,7 +50,10 @@ public class Player extends Agent
                 addBehaviour(new PlayerBeta(this));
                 break;
             case 3:
-                addBehaviour(new PlayerTravos(this));
+                addBehaviour(new PlayerFIRE(this));
+                break;
+            case 4:
+                addBehaviour(new PlayerFIRExperience(this));
                 break;
             default:
                 break;

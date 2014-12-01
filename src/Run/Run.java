@@ -32,15 +32,17 @@ public class Run {
         //System.out.println(expertsName.toString());
         Master master = new Master();
 
-        for(int i  = 0; i< 2;i++) {
-            players.add(new Player(i));
-        }
+        //FIRE(3);
+        //for(int i  = 0; i< 2;i++) {
+
+        //players.add();
+        //}
 
 
 		try {
 			//AgentController dummy = cc.createNewAgent("sfdds", "agents.AgvAgent", null);
 			AgentController rma = cc.createNewAgent("rma", "jade.tools.rma.rma", null);
-			AgentController f1 = cc.acceptNewAgent("main", master);
+			AgentController f1 = cc.acceptNewAgent("MASTER", master);
 			//AgentController p1 = cc.acceptNewAgent("player", playerDummy);
             //AgentController p2 = cc.acceptNewAgent("playerRandom", playerRandom);
 
@@ -56,23 +58,26 @@ public class Run {
             try {
                 b= a.nextLine();
             }catch (Exception ex){
-
+                System.out.println("Something crashed");
             }
             if(!b.equals("yes")){
                 System.exit(0);
             }
 
-            f1.start();
 
-
+            allControllers.add(cc.acceptNewAgent("FIRE", new Player(3)));
+            allControllers.add(cc.acceptNewAgent("DUMMY", new Player(0)));
+            allControllers.add(cc.acceptNewAgent("RANDOM", new Player(1)));
 
             int temp = allControllers.size();
-            for(int i =0 ; i< players.size();i++) {
-                allControllers.add(cc.acceptNewAgent("player"+i, players.get(i)));
-                allControllers.get(temp + i).start();
+
+
+            for (AgentController allController : allControllers) {
+                allController.start();
             }
-			
-		} catch (StaleProxyException e) {
+            f1.start();
+
+        } catch (StaleProxyException e) {
 			e.printStackTrace();
 		} 
 		// Fire up the a

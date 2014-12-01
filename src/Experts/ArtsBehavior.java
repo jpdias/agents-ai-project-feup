@@ -5,13 +5,8 @@ import Common.Question;
 import jade.core.Agent;
 import jade.core.behaviours.SimpleBehaviour;
 import jade.lang.acl.ACLMessage;
-
 import java.util.ArrayList;
-import java.util.Random;
 
-/**
- * Created by JP on 30/10/2014.
- */
 class ArtsBehavior extends SimpleBehaviour
 {
     public ArtsBehavior(Agent a) {
@@ -24,17 +19,16 @@ class ArtsBehavior extends SimpleBehaviour
         ACLMessage msg = myAgent.blockingReceive();
         if (msg!=null) {
 
-            Random randomGenerator = new Random();
+
             int sol = 3;
             String[] question =  msg.getContent().split(",");
             ArrayList<Question> history = Information.getAllQuestion("Arts");
 
-            for(int i = 0; i <history.size();i++){
-                if( history.get(i).getQuestion().equals(question[1])){
-                    sol = history.get(i).getSolution();
+            for (Question aHistory : history) {
+                if (aHistory.getQuestion().equals(question[1])) {
+                    sol = aHistory.getSolution();
                 }
             }
-
             ACLMessage reply = msg.createReply();
 
             reply.setPerformative( ACLMessage.INFORM );

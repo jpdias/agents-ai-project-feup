@@ -8,8 +8,6 @@ import jade.lang.acl.*;
 import java.util.Random;
 
 
-
-
 class PlayerRandom extends SimpleBehaviour
 {
     private static AID[] experts;
@@ -55,7 +53,7 @@ class PlayerRandom extends SimpleBehaviour
 
             ACLMessage lastQuestionSol =  myAgent.blockingReceive();
 
-            if (lastQuestionSol.getContent()!= null) {};
+            if (lastQuestionSol.getContent()!= null) {}
         }
 
     }
