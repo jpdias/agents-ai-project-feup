@@ -17,26 +17,39 @@ import java.util.Scanner;
 public class Master extends Agent
 {
 
-    public static int numberofquestions = 0;
+    public static int numberofquestions = -1;
     public static int ncurrentquestion = 0;
     public static Hashtable<AID,Integer> results = new Hashtable<AID,Integer>();
     public static AID[] players;
+
+    public Master(int numberofquestions){
+        this.numberofquestions=numberofquestions;
+    }
+
     protected void setup()
     {
 
 
-        System.out.println("How many questions?(>0)");
+       /* System.out.println("How many questions?(>0)");
         Scanner scn = new Scanner(System.in);
         String number="0";
         try {
             number= scn.nextLine();
         }catch (Exception ex){
             System.out.println("NaN");
-        }
+        }*/
 
-        numberofquestions = Integer.parseInt(number);
+       // numberofquestions = Integer.parseInt(number);
 
+        //System.out.println("START");
+        /*while(true){
+            System.out.print("");
+            if(Run.init){
+                break;
+            }
+        }*/
         // First set-up answering behaviour
+
         addBehaviour(new Ask(this));
     }
 }
@@ -115,6 +128,7 @@ class Ask extends SimpleBehaviour {
                 int pnts =  Master.results.get(x);
                 System.out.println( str + " -> Total right: " + pnts +"; Total wrong: "+ (n-pnts) );
             }
+
         }
 
     }
