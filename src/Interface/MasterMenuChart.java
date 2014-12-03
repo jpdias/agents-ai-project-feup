@@ -9,6 +9,7 @@ import javax.swing.*;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Enumeration;
 
 /**
@@ -25,31 +26,32 @@ public class MasterMenuChart extends JPanel {
     public void init(){
 
         initValues();
-        
-        BarChartPlot right = Plots.newBarChartPlot(Data.newData(right_answers), Color.newColor("549654"), "Right");
-        BarChartPlot wrong = Plots.newBarChartPlot(Data.newData(wrong_answers), Color.newColor("FF6A5C"), "Wrong");
 
-        // Instantiating chart.
-        com.googlecode.charts4j.BarChart chart = GCharts.newBarChart(right, wrong);
+        Data data_right= DataUtil.scaleWithinRange(0,Master.numberofquestions,right_answers);
+        Data data_worng= DataUtil.scaleWithinRange(0,Master.numberofquestions,wrong_answers);
+
+        BarChartPlot right = Plots.newBarChartPlot(data_right, Color.newColor("549654"), "Right");
+        BarChartPlot wrong = Plots.newBarChartPlot(data_worng, Color.newColor("FF6A5C"), "Wrong");
+        BarChart chart = GCharts.newBarChart(right, wrong);
 
         // Defining axis info and styles
         AxisStyle axisStyle = AxisStyle.newAxisStyle(Color.WHITE, 13, AxisTextAlignment.CENTER);
-        AxisLabels score = AxisLabelsFactory.newAxisLabels("Answers", 100);
-        score.setAxisStyle(axisStyle);
-        AxisLabels year = AxisLabelsFactory.newAxisLabels("Players Algorithms", 50.0);
-        year.setAxisStyle(axisStyle);
+        AxisLabels answers = AxisLabelsFactory.newAxisLabels("Answers", 50.0);
+        answers.setAxisStyle(axisStyle);
+        AxisLabels algt = AxisLabelsFactory.newAxisLabels("Players Algorithms", 50.0);
+        algt.setAxisStyle(axisStyle);
 
         // Adding axis info to chart.
-        chart.addYAxisLabels(AxisLabelsFactory.newNumericRangeAxisLabels(0, Master.numberofquestions));
         chart.addXAxisLabels(AxisLabelsFactory.newAxisLabels(algorithms));
-        chart.addYAxisLabels(score);
-        chart.addXAxisLabels(year);
+        chart.addXAxisLabels(algt);
+        chart.addYAxisLabels(AxisLabelsFactory.newNumericRangeAxisLabels(0, Master.numberofquestions));
+        chart.addYAxisLabels(answers);
 
         chart.setSize(550, 350);
         chart.setBarWidth(30);
         chart.setSpaceWithinGroupsOfBars(30);
         chart.setTitle("Results", Color.WHITE, 16);
-        chart.setGrid(Master.numberofquestions, 10, 3, 2);
+        chart.setGrid(20, 10, 3, 2);
         chart.setBackgroundFill(Fills.newSolidFill(Color.newColor("2B2B2B")));
         LinearGradientFill fill = Fills.newLinearGradientFill(0, Color.newColor("565656"), 100);
         chart.setAreaFill(fill);
@@ -73,8 +75,8 @@ public class MasterMenuChart extends JPanel {
             String str = x.getLocalName();
             int pnts =  Master.results.get(x);
             algorithms.add(str);
-            right_answers.add(pnts*10);
-            wrong_answers.add((Master.numberofquestions-pnts)*10);
+            right_answers.add(pnts);
+            wrong_answers.add((Master.numberofquestions-pnts));
         }
     }
 }
