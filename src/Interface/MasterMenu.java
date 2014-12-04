@@ -24,8 +24,6 @@ public class MasterMenu extends JPanel {
 
     public MasterMenu(){
 
-        setBackground( new Color(43,43,43));
-
         JPanel experts = new JPanel(new GridLayout(num_experts,1));
         experts.setOpaque(false);
         JPanel players =new JPanel(new GridLayout(num_players, 1));
@@ -55,12 +53,10 @@ public class MasterMenu extends JPanel {
 
         //adding button start
         JLabel question = new JLabel("How many questions?");
-        question.setForeground(Color.WHITE);
         buttons.add(question);
         num_questions = new JTextField(10);
         buttons.add(num_questions);
         start = new JButton("Start");
-        start.setBackground(new Color(86,86,86));
         start.addActionListener(new Handler());
         buttons.add(start);
 
@@ -69,10 +65,14 @@ public class MasterMenu extends JPanel {
         up_panel.add(players);
         up_panel.add(experts);
 
-        setLayout(new BoxLayout(MasterMenu.this, BoxLayout.Y_AXIS));
+        JPanel geral = new JPanel();
+        geral.setOpaque(false);
+        geral.setLayout(new BoxLayout(geral, BoxLayout.Y_AXIS));
+        geral.add(up_panel);
+        geral.add(buttons);
 
-        add(up_panel);
-        add(buttons);
+        setLayout(new GridBagLayout());
+        add(geral);
     }
 
     public void createJCheckBox(JPanel panel, String name){

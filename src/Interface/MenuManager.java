@@ -42,6 +42,7 @@ public class MenuManager extends JFrame {
         setSize(new Dimension(600, 400));
         setResizable(false);
         setVisible(true);
+        setLocationRelativeTo(null);
     }
 
     public static MasterMenuChart getMasterMenuChart(){
@@ -54,5 +55,10 @@ public class MenuManager extends JFrame {
         } catch (Exception e) {
             // If Nimbus is not available, you can set the GUI to another look and feel.
         }
+        UIManager UI=new UIManager();
+        UI.put("OptionPane.background", new Color(43,43,43));
+        UI.put("Panel.background", new Color(43,43,43));
+        UI.put("Label.foreground", Color.WHITE);
+        UI.put("OptionPane.messageForeground", Color.WHITE);
     }
 }

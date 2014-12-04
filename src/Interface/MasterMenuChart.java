@@ -2,14 +2,15 @@ package Interface;
 
 import Run.Master;
 import com.googlecode.charts4j.*;
+import com.googlecode.charts4j.Color;
 import jade.core.AID;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
+import java.awt.*;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Enumeration;
 
 /**
@@ -47,7 +48,19 @@ public class MasterMenuChart extends JPanel {
         chart.addYAxisLabels(AxisLabelsFactory.newNumericRangeAxisLabels(0, Master.numberofquestions));
         chart.addYAxisLabels(answers);
 
-        chart.setSize(550, 350);
+        int value=0;
+        if(algorithms.size()==1){
+            value=220;
+        }else if(algorithms.size()==2){
+            value=300;
+        }else if(algorithms.size()==3){
+            value=400;
+        }else if(algorithms.size()==4) {
+            value=460;
+        }else{
+            value=560;
+        }
+        chart.setSize(value, 350);
         //chart.setBarWidth(30);
         //chart.setSpaceWithinGroupsOfBars(30);
         chart.setSpaceBetweenGroupsOfBars(30);
@@ -64,9 +77,8 @@ public class MasterMenuChart extends JPanel {
             e.printStackTrace();
         }
 
-
-        setBackground( new java.awt.Color(43,43,43));
         add(charts);
+        setLayout(new GridBagLayout());
     }
 
     public void initValues(){

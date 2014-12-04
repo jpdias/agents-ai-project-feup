@@ -34,7 +34,6 @@ public class InitialMenu extends JPanel {
         JPanel panel1 = new JPanel();
         panel1.setOpaque(false);
         startAgent=new JButton("Start Agent");
-        startAgent.setBackground(new Color(86,86,86));
         startAgent.addActionListener(new Handler());
         panel1.add(startAgent);
 
@@ -46,27 +45,17 @@ public class InitialMenu extends JPanel {
         JPanel geral = new JPanel();
         geral.setLayout(new BoxLayout(geral, BoxLayout.Y_AXIS));
         geral.setOpaque(false);
-        geral.add(new JLabel(" "));
-        geral.add(new JLabel(" "));
-        geral.add(new JLabel(" "));
-        geral.add(new JLabel(" "));
-        geral.add(new JLabel(" "));
         geral.add(panel2);
-        geral.add(new JLabel(" "));
-        geral.add(new JLabel(" "));
-        geral.add(new JLabel(" "));
         geral.add(down_panel);
 
-        setBackground(new Color(43, 43, 43));
-
+        setLayout(new GridBagLayout());
         add(geral);
     }
 
     public JLabel createJLabel(String text){
         JLabel t = new JLabel(text);
         t.setHorizontalAlignment(JLabel.CENTER);
-        t.setFont(new Font("Stencil", Font.BOLD, 30));
-        t.setForeground(Color.WHITE);
+        t.setFont(new Font("Consolas", Font.BOLD, 30));
         return t;
     }
 

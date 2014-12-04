@@ -1,7 +1,5 @@
 package Interface;
 
-import Run.Master;
-
 import javax.swing.*;
 import javax.swing.text.DefaultCaret;
 import java.awt.*;
@@ -20,8 +18,6 @@ public class MasterMenuConsole extends JPanel {
 
     public MasterMenuConsole(){
 
-        setBackground( new Color(43,43,43));
-
         JTextArea ta=new JTextArea(23,65);
         ta.setFont(new Font("SansSerif", Font.PLAIN, 10));
         redirectConsoleTo(ta);
@@ -35,7 +31,6 @@ public class MasterMenuConsole extends JPanel {
         panel.setOpaque(false);
         showCharts = new JButton("Show Results");
         showCharts.setEnabled(false);
-        showCharts.setBackground(new Color(86, 86, 86));
         showCharts.addActionListener(new Handler());
         panel.add(showCharts);
 
