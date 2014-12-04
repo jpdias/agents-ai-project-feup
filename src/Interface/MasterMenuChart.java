@@ -48,8 +48,9 @@ public class MasterMenuChart extends JPanel {
         chart.addYAxisLabels(answers);
 
         chart.setSize(550, 350);
-        chart.setBarWidth(30);
-        chart.setSpaceWithinGroupsOfBars(30);
+        //chart.setBarWidth(30);
+        //chart.setSpaceWithinGroupsOfBars(30);
+        chart.setSpaceBetweenGroupsOfBars(30);
         chart.setTitle("Results", Color.WHITE, 16);
         chart.setGrid(20, 10, 3, 2);
         chart.setBackgroundFill(Fills.newSolidFill(Color.newColor("2B2B2B")));

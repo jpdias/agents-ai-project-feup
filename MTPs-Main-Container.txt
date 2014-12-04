@@ -1,1 +1,1 @@
-http://Joao:7778/acc
+http://ssla.fe.up.pt:7778/acc

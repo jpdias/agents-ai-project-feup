@@ -64,13 +64,15 @@ public class MasterMenu extends JPanel {
         start.addActionListener(new Handler());
         buttons.add(start);
 
-        JPanel up_panel = new JPanel(new GridLayout(1,2));
+        JPanel up_panel = new JPanel();
         up_panel.setOpaque(false);
         up_panel.add(players);
         up_panel.add(experts);
 
-        add(up_panel, BorderLayout.NORTH);
-        add(buttons, BorderLayout.SOUTH);
+        setLayout(new BoxLayout(MasterMenu.this, BoxLayout.Y_AXIS));
+
+        add(up_panel);
+        add(buttons);
     }
 
     public void createJCheckBox(JPanel panel, String name){

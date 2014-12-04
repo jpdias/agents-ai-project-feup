@@ -3,6 +3,8 @@ package Run;
 import Common.Information;
 import Common.Question;
 import Common.Utilities;
+import Interface.MasterMenuChart;
+import Interface.MasterMenuConsole;
 import jade.core.Agent;
 import jade.core.AID;
 import jade.core.behaviours.*;
@@ -128,7 +130,7 @@ class Ask extends SimpleBehaviour {
                 int pnts =  Master.results.get(x);
                 System.out.println( str + " -> Total right: " + pnts +"; Total wrong: "+ (n-pnts) );
             }
-
+            MasterMenuConsole.showCharts.setEnabled(true);
         }
 
     }

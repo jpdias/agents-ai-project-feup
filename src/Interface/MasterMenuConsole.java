@@ -1,5 +1,7 @@
 package Interface;
 
+import Run.Master;
+
 import javax.swing.*;
 import javax.swing.text.DefaultCaret;
 import java.awt.*;
@@ -14,7 +16,7 @@ import java.io.PrintStream;
  */
 public class MasterMenuConsole extends JPanel {
 
-    private JButton showCharts;
+    public static JButton showCharts;
 
     public MasterMenuConsole(){
 
@@ -32,7 +34,8 @@ public class MasterMenuConsole extends JPanel {
         JPanel panel = new JPanel();
         panel.setOpaque(false);
         showCharts = new JButton("Show Results");
-        showCharts.setBackground(new Color(86,86,86));
+        showCharts.setEnabled(false);
+        showCharts.setBackground(new Color(86, 86, 86));
         showCharts.addActionListener(new Handler());
         panel.add(showCharts);
 
@@ -58,8 +61,8 @@ public class MasterMenuConsole extends JPanel {
 
         public void actionPerformed(ActionEvent e) {
             if(e.getSource()==showCharts){
-                MenuManager.cardlayout.show(MenuManager.cards,"MasterMenuChart");
-                MenuManager.getMasterMenuChart().init();
+                    MenuManager.cardlayout.show(MenuManager.cards, "MasterMenuChart");
+                    MenuManager.getMasterMenuChart().init();
             }
         }
 

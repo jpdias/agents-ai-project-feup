@@ -50,6 +50,7 @@ public class InitialMenu extends JPanel {
         geral.add(new JLabel(" "));
         geral.add(new JLabel(" "));
         geral.add(new JLabel(" "));
+        geral.add(new JLabel(" "));
         geral.add(panel2);
         geral.add(new JLabel(" "));
         geral.add(new JLabel(" "));
@@ -64,7 +65,7 @@ public class InitialMenu extends JPanel {
     public JLabel createJLabel(String text){
         JLabel t = new JLabel(text);
         t.setHorizontalAlignment(JLabel.CENTER);
-        t.setFont(new Font("Bradley Hand ITC", Font.BOLD, 30));
+        t.setFont(new Font("Stencil", Font.BOLD, 30));
         t.setForeground(Color.WHITE);
         return t;
     }
