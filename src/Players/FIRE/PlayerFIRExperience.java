@@ -121,8 +121,13 @@ public class PlayerFIRExperience extends SimpleBehaviour {
 
             expertop.setConversationId(String.valueOf(expertop));
             myAgent.send(expertop);
-
-            ACLMessage response =  myAgent.blockingReceive();
+            ACLMessage response;
+            while(true){
+                response = myAgent.blockingReceive();
+                if(!response.getContent().equals("Opinion"))
+                    break;
+            }
+            //response =  myAgent.blockingReceive();
             pos = Integer.parseInt(response.getContent());
 
             ACLMessage resp = msg.createReply();
