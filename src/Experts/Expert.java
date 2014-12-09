@@ -43,7 +43,7 @@ public class Expert extends Agent
         switch (agentnumber){
 
             case 0:{
-                addBehaviour(new RandomBehavior(this));
+                addBehaviour(new VariableBehavior(this));
                 break;
             }
             case 1:{
@@ -68,6 +68,10 @@ public class Expert extends Agent
             }
             case 6:{
                 addBehaviour(new AllBehavior(this));
+                break;
+            }
+            case 7:{
+                addBehaviour(new RandomBehavior(this));
                 break;
             }
             default:{

@@ -83,7 +83,9 @@ public class Run {
         allControllers.add(cc.acceptNewAgent("HistoryE", new Expert(3)));
         allControllers.add(cc.acceptNewAgent("ArtsE", new Expert(4)));
         allControllers.add(cc.acceptNewAgent("PlacesE", new Expert(5)));
-        allControllers.add(cc.acceptNewAgent("RandomE", new Expert(0)));
+        allControllers.add(cc.acceptNewAgent("RandomE", new Expert(7)));
+        allControllers.add(cc.acceptNewAgent("AllE", new Expert(6)));
+        allControllers.add(cc.acceptNewAgent("VariableE", new Expert(0)));
     }
 
     public static void addPlayers() throws StaleProxyException {
@@ -103,7 +105,7 @@ public class Run {
     }
 
     public static void startAgents() throws StaleProxyException {
-        for(int i =6 ; i< allControllers.size();i++) {
+        for(int i =8 ; i< allControllers.size();i++) {
             if(MasterMenu.checkboxes_selected.get(i)){
                 allControllers.get(i).start();
             }

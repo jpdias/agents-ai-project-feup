@@ -64,7 +64,7 @@ public class PlayerBeta extends SimpleBehaviour
 
         double new_alpha = (2*alpha*total_rights)/((beta+2)*(total_rights+total_wrongs+2)+2*alpha);
         double new_beta = (2*alpha*total_wrongs)/((beta+2)*(total_rights+total_wrongs+2)+2*alpha);
-        System.out.println("new_alpha="+new_alpha+"----------------------------new_beta="+new_beta);
+        //System.out.println("new_alpha="+new_alpha+"----------------------------new_beta="+new_beta);
 
         return calculateReputationValue(new_alpha, new_beta);
     }
@@ -80,10 +80,10 @@ public class PlayerBeta extends SimpleBehaviour
             if(infoBeta.reputation[j]>=minor_probability_wrong ){
                 infoBeta.reputation[j] = discountReputation(infoBeta.res[j][0], infoBeta.res[j][1]);
                 minor_probability_wrong = infoBeta.reputation[j];
-                System.out.println(infoBeta.experts[j].getLocalName()+"->["+infoBeta.res[j][0]+"  "+infoBeta.res[j][1]+"  --"+infoBeta.reputation[j]+"]");
+                //System.out.println(infoBeta.experts[j].getLocalName()+"->["+infoBeta.res[j][0]+"  "+infoBeta.res[j][1]+"  --"+infoBeta.reputation[j]+"]");
                 currentAgent = j;
             }else {
-                System.out.println(infoBeta.experts[j].getLocalName() + "->["+ infoBeta.res[j][0] + "  " + infoBeta.res[j][1] + "  " + infoBeta.reputation[j] + "]");
+                //System.out.println(infoBeta.experts[j].getLocalName() + "->["+ infoBeta.res[j][0] + "  " + infoBeta.res[j][1] + "  " + infoBeta.reputation[j] + "]");
             }
         }
 
@@ -109,7 +109,7 @@ public class PlayerBeta extends SimpleBehaviour
             int index = betaTrustModel();
             String agentname = infoBeta.experts[index].getLocalName();
 
-            System.out.println("-------------------------------BETA-----------------------------"+agentname+"---index = "+index);
+            //System.out.println("-------------------------------BETA-----------------------------"+agentname+"---index = "+index);
             expertop.addReceiver(new AID(agentname, AID.ISLOCALNAME));
 
             expertop.setConversationId(String.valueOf(expertop));

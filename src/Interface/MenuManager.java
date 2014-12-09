@@ -15,7 +15,7 @@ public class MenuManager extends JFrame {
     private static MasterMenuChart mmch;
 
     public MenuManager() {
-        super("Trust in Information Sources - ");
+        super("Trust in Information Sources");
 
         setLookAndFeel();
 

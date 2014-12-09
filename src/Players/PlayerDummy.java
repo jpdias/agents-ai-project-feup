@@ -63,7 +63,7 @@ class PlayerDummy extends SimpleBehaviour
             }
             String agentname = infoDummy.experts[currentAgent].getLocalName();//selected expert
 
-            //System.out.println(agentname);
+            System.out.println(agentname);
             AID expert = new AID(agentname, AID.ISLOCALNAME);
             expertop.addReceiver(expert);
             expertop.setConversationId(String.valueOf(currentAgent));

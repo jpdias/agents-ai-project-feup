@@ -19,7 +19,7 @@ public class MasterMenu extends JPanel {
     private JButton start;
     private JTextField num_questions;
 
-    private final int num_players=4, num_experts=6;
+    private final int num_players=4, num_experts=8;
     private ArrayList<JCheckBox>checkboxes=new ArrayList<JCheckBox>();
     public static ArrayList<Boolean>checkboxes_selected=new ArrayList<Boolean>();
 
@@ -36,6 +36,8 @@ public class MasterMenu extends JPanel {
         createJCheckBox(experts, "Arts-100%");
         createJCheckBox(experts, "Places-100%");
         createJCheckBox(experts, "Random-100%");
+        createJCheckBox(experts, "All-100%");
+        createJCheckBox(experts, "Variable-100%");
         TitledBorder experts_title = new TitledBorder("Experts");
         experts_title.setTitleColor(Color.WHITE);
         experts.setBorder(experts_title);
@@ -79,10 +81,6 @@ public class MasterMenu extends JPanel {
         checkboxes.add(cb);
         cb.setOpaque(false);
         panel.add(cb);
-    }
-
-    public boolean getSelectedCheckBox(int i){
-        return checkboxes_selected.get(i);
     }
 
     private class Handler implements ActionListener {
