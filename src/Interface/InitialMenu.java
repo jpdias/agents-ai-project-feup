@@ -66,13 +66,7 @@ public class InitialMenu extends JPanel {
             if(e.getSource() == startAgent){
                 MenuManager.cardlayout.show(MenuManager.cards,"AgentMenu");
             }else if(e.getSource()==startMaster){
-                try {
-                    Run.initRMA();
-                    Run.addExperts();
-                    Run.addPlayers();
-                } catch (StaleProxyException e1) {
-                    e1.printStackTrace();
-                }
+                Run.initRMA();
                 MenuManager.cardlayout.show(MenuManager.cards,"MasterMenu");
             }
         }

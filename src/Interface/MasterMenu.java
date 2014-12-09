@@ -23,8 +23,6 @@ public class MasterMenu extends JPanel {
     private ArrayList<JCheckBox>checkboxes=new ArrayList<JCheckBox>();
     public static ArrayList<Boolean>checkboxes_selected=new ArrayList<Boolean>();
 
-    public static int numberofquestions=0;
-
     public MasterMenu(){
 
         JPanel experts = new JPanel(new GridLayout(num_experts,1));
@@ -96,8 +94,10 @@ public class MasterMenu extends JPanel {
                         checkboxes_selected.add(checkboxes.get(i).isSelected());
                     }
                     MenuManager.cardlayout.show(MenuManager.cards,"WaitMenu");
-                    numberofquestions = Integer.parseInt(num_questions.getText());
+                    int numberofquestions = Integer.parseInt(num_questions.getText());
                     Run.addMaster(numberofquestions);
+                    Run.addExperts();
+                    Run.addPlayers();
                     Run.startExperts();
                 }catch(NumberFormatException ex){
                     JOptionPane.showMessageDialog(null,"You didn't introduce a number","Warning",JOptionPane.WARNING_MESSAGE);

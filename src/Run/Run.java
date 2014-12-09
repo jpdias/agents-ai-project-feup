@@ -101,7 +101,7 @@ public class Run {
         }
     }
 
-    public static void startAgents(int numQuests) throws StaleProxyException {
+    public static void startAgents() throws StaleProxyException {
         for(int i =6 ; i< allControllers.size();i++) {
             if(MasterMenu.checkboxes_selected.get(i)){
                 allControllers.get(i).start();
@@ -113,36 +113,5 @@ public class Run {
             e.printStackTrace();
         }
         f1.start();
-    }
-
-    public static void initAgents(MasterMenu im, int numQuests){
-        initRMA();
-        Master master = new Master(numQuests);
-        try {
-            f1 = cc.acceptNewAgent("MASTER", master);
-
-            addExperts();
-
-            addPlayers();
-
-            //startAgents(im);
-
-            /*boolean state=true;
-            while(!state){
-                state=true;
-                for(int j=0;j<allControllers.size();j++){
-                    if(allControllers.get(j).getState().getCode()!=Agent.AP_ACTIVE){
-                        System.out.println("HELLO["+j+"]"+allControllers.get(j).getState().getCode()+"/ code="+Agent.AP_ACTIVE/*AgentState.cAGENT_STATE_ACTIVE);
-                        state=false;
-                    }else{
-                        System.out.println("HELLO["+j+"]"+allControllers.get(j).getState().getCode()+"/ code="+Agent.AP_ACTIVE);
-                    }
-                }
-            }*/
-        } catch (StaleProxyException e) {
-            e.printStackTrace();
-        } catch (ControllerException e) {
-            e.printStackTrace();
-        }
     }
 }

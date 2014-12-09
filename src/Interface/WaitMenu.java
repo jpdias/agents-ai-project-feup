@@ -44,7 +44,7 @@ public class WaitMenu extends JPanel {
         public void actionPerformed(ActionEvent e) {
             if(e.getSource() == next){
                 try {
-                    Run.startAgents(MasterMenu.numberofquestions);
+                    Run.startAgents();
                 } catch (StaleProxyException e1) {
                     e1.printStackTrace();
                 }
