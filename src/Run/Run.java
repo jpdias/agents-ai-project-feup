@@ -88,11 +88,19 @@ public class Run {
         allControllers.add(cc.acceptNewAgent("BETA", new Player(2)));
     }
 
-    public static void startAgents(MasterMenu im, int numQuests) throws StaleProxyException {
+    public static void startExperts() throws StaleProxyException {
+        for(int i =0 ; i< allControllers.size();i++) {
+            if(MasterMenu.checkboxes_selected.get(i)){
+                allControllers.get(i).start();
+            }
+        }
+    }
+
+    public static void startAgents(int numQuests) throws StaleProxyException {
         Master master = new Master(numQuests);
         f1 = cc.acceptNewAgent("MASTER", master);
-        for(int i =0 ; i< allControllers.size();i++) {
-            if(im.getSelectedCheckBox(i)){
+        for(int i =6 ; i< allControllers.size();i++) {
+            if(MasterMenu.checkboxes_selected.get(i)){
                 allControllers.get(i).start();
             }
         }

@@ -24,7 +24,7 @@ public class WaitMenu extends JPanel {
         wait_panel.add(wait);
 
         JPanel next_panel = new JPanel();
-        next = new JButton("Next");
+        next = new JButton("Start");
         next.addActionListener(new Handler());
         next_panel.add(next);
 
@@ -43,7 +43,12 @@ public class WaitMenu extends JPanel {
 
         public void actionPerformed(ActionEvent e) {
             if(e.getSource() == next){
-                MenuManager.cardlayout.show(MenuManager.cards,"MasterMenu");
+                try {
+                    Run.startAgents(MasterMenu.numberofquestions);
+                } catch (StaleProxyException e1) {
+                    e1.printStackTrace();
+                }
+                MenuManager.cardlayout.show(MenuManager.cards,"MasterMenuConsole");
             }
         }
 

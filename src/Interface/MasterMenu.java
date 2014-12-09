@@ -8,10 +8,9 @@ import javax.swing.border.TitledBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.PrintStream;
 import java.util.ArrayList;
+
+import static Run.Run.startExperts;
 
 /**
  * Created by João on 01/12/2014.
@@ -22,7 +21,9 @@ public class MasterMenu extends JPanel {
 
     private final int num_players=4, num_experts=6;
     private ArrayList<JCheckBox>checkboxes=new ArrayList<JCheckBox>();
-    private ArrayList<Boolean>checkboxes_selected=new ArrayList<Boolean>();
+    public static ArrayList<Boolean>checkboxes_selected=new ArrayList<Boolean>();
+
+    public static int numberofquestions=0;
 
     public MasterMenu(){
 
@@ -55,7 +56,7 @@ public class MasterMenu extends JPanel {
         buttons.add(question);
         num_questions = new JTextField(10);
         buttons.add(num_questions);
-        start = new JButton("Start");
+        start = new JButton("Next");
         start.addActionListener(new Handler());
         buttons.add(start);
 
@@ -94,9 +95,9 @@ public class MasterMenu extends JPanel {
                     for(int i=0; i<checkboxes.size();i++){
                         checkboxes_selected.add(checkboxes.get(i).isSelected());
                     }
-                    int numberofquestions = Integer.parseInt(num_questions.getText());
-                    MenuManager.cardlayout.show(MenuManager.cards,"MasterMenuConsole");
-                    Run.startAgents(MasterMenu.this, numberofquestions);
+                    MenuManager.cardlayout.show(MenuManager.cards,"WaitMenu");
+                    Run.startExperts();
+                    numberofquestions = Integer.parseInt(num_questions.getText());
                 }catch(NumberFormatException ex){
                     JOptionPane.showMessageDialog(null,"You didn't introduce a number","Warning",JOptionPane.WARNING_MESSAGE);
                 } catch (StaleProxyException e1) {
