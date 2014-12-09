@@ -70,6 +70,11 @@ public class Run {
         }
     }
 
+    public static void addMaster(int numQuests) throws StaleProxyException {
+        Master master = new Master(numQuests);
+        f1 = cc.acceptNewAgent("MASTER", master);
+    }
+
     public static void addExperts() throws StaleProxyException {
         //adding experts
         allControllers.add(cc.acceptNewAgent("SportsE", new Expert(1)));
@@ -97,8 +102,6 @@ public class Run {
     }
 
     public static void startAgents(int numQuests) throws StaleProxyException {
-        Master master = new Master(numQuests);
-        f1 = cc.acceptNewAgent("MASTER", master);
         for(int i =6 ; i< allControllers.size();i++) {
             if(MasterMenu.checkboxes_selected.get(i)){
                 allControllers.get(i).start();

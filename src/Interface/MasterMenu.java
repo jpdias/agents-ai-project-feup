@@ -96,8 +96,9 @@ public class MasterMenu extends JPanel {
                         checkboxes_selected.add(checkboxes.get(i).isSelected());
                     }
                     MenuManager.cardlayout.show(MenuManager.cards,"WaitMenu");
-                    Run.startExperts();
                     numberofquestions = Integer.parseInt(num_questions.getText());
+                    Run.addMaster(numberofquestions);
+                    Run.startExperts();
                 }catch(NumberFormatException ex){
                     JOptionPane.showMessageDialog(null,"You didn't introduce a number","Warning",JOptionPane.WARNING_MESSAGE);
                 } catch (StaleProxyException e1) {
