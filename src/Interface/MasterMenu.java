@@ -1,6 +1,8 @@
 package Interface;
 
 import Run.*;
+import jade.wrapper.StaleProxyException;
+
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
 import java.awt.*;
@@ -25,11 +27,8 @@ public class MasterMenu extends JPanel {
     public MasterMenu(){
 
         JPanel experts = new JPanel(new GridLayout(num_experts,1));
-        experts.setOpaque(false);
         JPanel players =new JPanel(new GridLayout(num_players, 1));
-        players.setOpaque(false);
         JPanel buttons = new JPanel();
-        buttons.setOpaque(false);
 
         //adding checkbox experts
         createJCheckBox(experts, "Sports-100%");
@@ -97,10 +96,12 @@ public class MasterMenu extends JPanel {
                     }
                     int numberofquestions = Integer.parseInt(num_questions.getText());
                     MenuManager.cardlayout.show(MenuManager.cards,"MasterMenuConsole");
-                    Run.initAgents(MasterMenu.this, numberofquestions);
+                    Run.startAgents(MasterMenu.this, numberofquestions);
                 }catch(NumberFormatException ex){
                     JOptionPane.showMessageDialog(null,"You didn't introduce a number","Warning",JOptionPane.WARNING_MESSAGE);
-                }finally{
+                } catch (StaleProxyException e1) {
+                    e1.printStackTrace();
+                } finally{
                     num_questions.setText("");
                 }
             }

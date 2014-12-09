@@ -23,12 +23,14 @@ public class MenuManager extends JFrame {
 
         InitialMenu im=new InitialMenu();
         MasterMenu mm=new MasterMenu();
+        WaitMenu wm=new WaitMenu();
         MasterMenuConsole mmc=new MasterMenuConsole();
         mmch = new MasterMenuChart();
         AgentMenu am=new AgentMenu();
 
         cards.add(im, "InitialMenu");
         cards.add(mm, "MasterMenu");
+        cards.add(wm, "WaitMenu");
         cards.add(mmc, "MasterMenuConsole");
         cards.add(mmch, "MasterMenuChart");
         cards.add(am, "AgentMenu");

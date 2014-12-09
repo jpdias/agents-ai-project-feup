@@ -1,6 +1,7 @@
 package Interface;
 
 import Run.Run;
+import jade.wrapper.StaleProxyException;
 import javafx.scene.text.*;
 
 import javax.swing.*;
@@ -64,8 +65,16 @@ public class InitialMenu extends JPanel {
         public void actionPerformed(ActionEvent e) {
             if(e.getSource() == startAgent){
                 MenuManager.cardlayout.show(MenuManager.cards,"AgentMenu");
+                //Run.initRemote("172.30.36.51",1099, 0);
             }else if(e.getSource()==startMaster){
-                MenuManager.cardlayout.show(MenuManager.cards,"MasterMenu");
+                try {
+                    Run.initRMA();
+                    Run.addExperts();
+                    Run.addPlayers();
+                } catch (StaleProxyException e1) {
+                    e1.printStackTrace();
+                }
+                MenuManager.cardlayout.show(MenuManager.cards,"WaitMenu");
             }
         }
 

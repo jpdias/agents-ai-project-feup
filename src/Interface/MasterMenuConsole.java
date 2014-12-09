@@ -20,7 +20,7 @@ public class MasterMenuConsole extends JPanel {
 
         JTextArea ta=new JTextArea(23,65);
         ta.setFont(new Font("SansSerif", Font.PLAIN, 10));
-        redirectConsoleTo(ta);
+        //redirectConsoleTo(ta);
         DefaultCaret caret = (DefaultCaret)ta.getCaret();
         caret.setUpdatePolicy(DefaultCaret.ALWAYS_UPDATE);
 
