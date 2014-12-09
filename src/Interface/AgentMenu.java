@@ -31,6 +31,7 @@ public class AgentMenu extends JPanel {
         JPanel port_panel = new JPanel();
         JLabel portLabel = new JLabel("Port:");
         portText = new JTextField(20);
+        portText.setText("1099");
         port_panel.add(portLabel);
         port_panel.add(portText);
 

@@ -9,7 +9,9 @@ import jade.core.ProfileImpl;
 import jade.wrapper.*;
 
 import javax.swing.*;
+import java.net.*;
 import java.util.ArrayList;
+import java.util.Enumeration;
 
 public class Run {
 
@@ -22,9 +24,8 @@ public class Run {
     public static AgentController f1;
 
 	public static void main( String arg[] ) {
-
         MenuManager im = new MenuManager();
-	}
+    }
 
     public static void initRMA(){
         // Get a hold on JADE runtime

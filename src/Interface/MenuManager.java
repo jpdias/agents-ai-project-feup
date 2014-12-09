@@ -2,6 +2,8 @@ package Interface;
 
 import javax.swing.*;
 import java.awt.*;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 
 /**
  * Created by João on 03/12/2014.
@@ -12,9 +14,8 @@ public class MenuManager extends JFrame {
     public static JPanel cards;
     private static MasterMenuChart mmch;
 
-    public MenuManager(){
-
-        super("Trust in Information Sources");
+    public MenuManager() {
+        super("Trust in Information Sources - ");
 
         setLookAndFeel();
 

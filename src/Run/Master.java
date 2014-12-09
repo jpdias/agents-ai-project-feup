@@ -10,6 +10,8 @@ import jade.core.AID;
 import jade.core.behaviours.*;
 import jade.lang.acl.*;
 
+import java.net.Inet4Address;
+import java.net.UnknownHostException;
 import java.util.Enumeration;
 import java.util.Hashtable;
 import java.util.Random;
