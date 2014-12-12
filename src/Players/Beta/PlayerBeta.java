@@ -37,22 +37,13 @@ public class PlayerBeta extends SimpleBehaviour
         infoBeta.initarray();
     }
 
-    public double getExpectedValue(){
-
-        double expectedValue=0;
-        int total_rights=0, total_wrongs=0;
-        for(int j =0; j< infoBeta.experts.length; j++){
-            total_rights += infoBeta.res[j][0];
-            total_wrongs += infoBeta.res[j][1];
-        }
-        expectedValue=(double)(total_rights+1)/(double)(total_rights+total_wrongs+2);
-
-        return expectedValue;
-    }
-
     public double calculateReputationValue(double alpha, double beta){
-        return (alpha-beta)/(alpha+beta+2);
+        return (alpha+1)/(alpha+beta+2);
     }
+
+    /*public double calculateReputationRateValue(double alpha, double beta){
+        return (alpha-beta)/(alpha+beta+2);
+    }*/
 
     public double discountReputation(double alpha, double beta){
 
@@ -65,8 +56,7 @@ public class PlayerBeta extends SimpleBehaviour
         double new_alpha = (2*alpha*total_rights)/((beta+2)*(total_rights+total_wrongs+2)+2*alpha);
         double new_beta = (2*alpha*total_wrongs)/((beta+2)*(total_rights+total_wrongs+2)+2*alpha);
         //System.out.println("new_alpha="+new_alpha+"----------------------------new_beta="+new_beta);
-
-        return calculateReputationValue(new_alpha, new_beta);
+        return calculateReputationValue(new_alpha, new_beta)*calculateReputationValue(alpha, beta);
     }
 
     public int betaTrustModel(){
@@ -75,15 +65,17 @@ public class PlayerBeta extends SimpleBehaviour
         double minor_probability_wrong=0;
         for(int j =0; j< infoBeta.experts.length; j++){
             int alpha= infoBeta.res[j][0], beta = infoBeta.res[j][1];
-            infoBeta.reputation[j] = calculateReputationValue(alpha, beta);
+            double reputation = calculateReputationValue(alpha, beta);
 
-            if(infoBeta.reputation[j]>=minor_probability_wrong ){
-                infoBeta.reputation[j] = discountReputation(infoBeta.res[j][0], infoBeta.res[j][1]);
+            //System.out.println(infoBeta.reputation[j]+">="+minor_probability_wrong);
+            if(infoBeta.reputation[j]>minor_probability_wrong){
+                //System.out.println(infoBeta.experts[j].getLocalName()+"->["+infoBeta.res[j][0]+"  "+infoBeta.res[j][1]+"  --"+infoBeta.reputation[j]+"]");
                 minor_probability_wrong = infoBeta.reputation[j];
-                System.out.println(infoBeta.experts[j].getLocalName()+"->["+infoBeta.res[j][0]+"  "+infoBeta.res[j][1]+"  --"+infoBeta.reputation[j]+"]");
+                infoBeta.reputation[j] = discountReputation(infoBeta.res[j][0], infoBeta.res[j][1]);
                 currentAgent = j;
             }else {
-                System.out.println(infoBeta.experts[j].getLocalName() + "->["+ infoBeta.res[j][0] + "  " + infoBeta.res[j][1] + "  " + infoBeta.reputation[j] + "]");
+                infoBeta.reputation[j]=reputation;
+                //System.out.println(infoBeta.experts[j].getLocalName() + "->["+ infoBeta.res[j][0] + "  " + infoBeta.res[j][1] + "  " + infoBeta.reputation[j] + "]");
             }
         }
 
