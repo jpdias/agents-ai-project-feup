@@ -80,10 +80,10 @@ public class PlayerBeta extends SimpleBehaviour
             if(infoBeta.reputation[j]>=minor_probability_wrong ){
                 infoBeta.reputation[j] = discountReputation(infoBeta.res[j][0], infoBeta.res[j][1]);
                 minor_probability_wrong = infoBeta.reputation[j];
-                //System.out.println(infoBeta.experts[j].getLocalName()+"->["+infoBeta.res[j][0]+"  "+infoBeta.res[j][1]+"  --"+infoBeta.reputation[j]+"]");
+                System.out.println(infoBeta.experts[j].getLocalName()+"->["+infoBeta.res[j][0]+"  "+infoBeta.res[j][1]+"  --"+infoBeta.reputation[j]+"]");
                 currentAgent = j;
             }else {
-                //System.out.println(infoBeta.experts[j].getLocalName() + "->["+ infoBeta.res[j][0] + "  " + infoBeta.res[j][1] + "  " + infoBeta.reputation[j] + "]");
+                System.out.println(infoBeta.experts[j].getLocalName() + "->["+ infoBeta.res[j][0] + "  " + infoBeta.res[j][1] + "  " + infoBeta.reputation[j] + "]");
             }
         }
 

@@ -48,20 +48,24 @@ public class MasterMenuChart extends JPanel {
         chart.addYAxisLabels(AxisLabelsFactory.newNumericRangeAxisLabels(0, Master.numberofquestions));
         chart.addYAxisLabels(answers);
 
+        int value = 560;
         if(algorithms.size()==1){
-            chart.setSize(220, 350);
+            value = 220;
         }else if(algorithms.size()==2){
-            chart.setSize(300, 350);
+            value = 300;
         }else if(algorithms.size()==3){
-            chart.setSize(400, 350);
+            value = 400;
         }else if(algorithms.size()==4) {
-            chart.setSize(460, 350);
+            value = 460;
         }else if(algorithms.size()==5){
-            chart.setSize(560, 350);
+            value = 560;
+        }
+        chart.setSize(value, 350);
+        if(algorithms.size()<6) {
+            chart.setSpaceBetweenGroupsOfBars(30);
         }
         //chart.setBarWidth(30);
         //chart.setSpaceWithinGroupsOfBars(30);
-        chart.setSpaceBetweenGroupsOfBars(30);
         chart.setTitle("Results", Color.WHITE, 16);
         chart.setGrid(20, 10, 3, 2);
         chart.setBackgroundFill(Fills.newSolidFill(Color.newColor("2B2B2B")));

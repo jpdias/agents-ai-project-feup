@@ -74,6 +74,10 @@ public class Expert extends Agent
                 addBehaviour(new RandomBehavior(this));
                 break;
             }
+            case 8:{
+                addBehaviour(new CommonBehavior(this));
+                break;
+            }
             default:{
                 break;
             }

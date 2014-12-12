@@ -19,7 +19,7 @@ public class MasterMenu extends JPanel {
     private JButton start;
     private JTextField num_questions;
 
-    private final int num_players=4, num_experts=8;
+    public final static int num_players=4, num_experts=9;
     private ArrayList<JCheckBox>checkboxes=new ArrayList<JCheckBox>();
     public static ArrayList<Boolean>checkboxes_selected=new ArrayList<Boolean>();
 
@@ -30,14 +30,15 @@ public class MasterMenu extends JPanel {
         JPanel buttons = new JPanel();
 
         //adding checkbox experts
+        createJCheckBox(experts, "Variable-100%");
         createJCheckBox(experts, "Sports-100%");
         createJCheckBox(experts, "Science-100%");
         createJCheckBox(experts, "History-100%");
         createJCheckBox(experts, "Arts-100%");
         createJCheckBox(experts, "Places-100%");
-        createJCheckBox(experts, "Random-100%");
         createJCheckBox(experts, "All-100%");
-        createJCheckBox(experts, "Variable-100%");
+        createJCheckBox(experts, "Random-100%");
+        createJCheckBox(experts, "Common-50%");
         TitledBorder experts_title = new TitledBorder("Experts");
         experts_title.setTitleColor(Color.WHITE);
         experts.setBorder(experts_title);

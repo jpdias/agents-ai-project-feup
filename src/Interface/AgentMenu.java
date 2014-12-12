@@ -82,7 +82,7 @@ public class AgentMenu extends JPanel {
                     if(checkboxes.get(i).isSelected()){
                         Run.initRemote(ipText.getText(), Integer.parseInt(portText.getText()), i);
                     }
-                    //MenuManager.cardlayout.show(MenuManager.cards,"MasterMenu");
+                    MenuManager.cardlayout.show(MenuManager.cards,"JoinMenu");
                 }
             }
         }

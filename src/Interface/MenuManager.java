@@ -28,6 +28,7 @@ public class MenuManager extends JFrame {
         MasterMenuConsole mmc=new MasterMenuConsole();
         mmch = new MasterMenuChart();
         AgentMenu am=new AgentMenu();
+        JoinMenu jm=new JoinMenu();
 
         cards.add(im, "InitialMenu");
         cards.add(mm, "MasterMenu");
@@ -35,6 +36,7 @@ public class MenuManager extends JFrame {
         cards.add(mmc, "MasterMenuConsole");
         cards.add(mmch, "MasterMenuChart");
         cards.add(am, "AgentMenu");
+        cards.add(jm, "JoinMenu");
 
         cardlayout = (CardLayout) cards.getLayout();
         cardlayout.show(cards, "InitialMenu");

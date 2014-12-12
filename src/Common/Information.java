@@ -89,6 +89,53 @@ public class Information{
         return all;
     }
 
+    public static  ArrayList<Question> getHalfQuestion(String category){
+
+        Connection db =connect();
+        Statement stmt = null;
+        ArrayList<Question> all = new ArrayList<Question>();
+        Question temp= null;
+        int size=0;
+        try {
+            stmt = db.createStatement();
+            ResultSet rs = stmt.executeQuery( "SELECT * FROM " + category + ";" );
+            while (rs.next()) {
+                size++;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        int i =0;
+        try {
+            stmt = db.createStatement();
+            ResultSet rs = stmt.executeQuery( "SELECT * FROM " + category + ";" );
+
+            while ( rs.next() ) {
+                i++;
+                if(i>=size/2)
+                    break;
+                String[] answers = {rs.getString("0"),rs.getString("1"),rs.getString("2"),rs.getString("3")};
+                temp = new Question(category,
+                        rs.getInt("ID"),
+                        rs.getString("Question"),
+                        answers,
+                        rs.getInt("Answer")
+                );
+
+                all.add(temp);
+                //System.out.println(question.toString());
+            }
+
+            rs.close();
+            stmt.close();
+            db.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return all;
+    }
+
 
     @Override
     public String toString() {

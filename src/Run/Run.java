@@ -78,14 +78,15 @@ public class Run {
 
     public static void addExperts() throws StaleProxyException {
         //adding experts
+        allControllers.add(cc.acceptNewAgent("VariableE", new Expert(0)));
         allControllers.add(cc.acceptNewAgent("SportsE", new Expert(1)));
         allControllers.add(cc.acceptNewAgent("ScienceE", new Expert(2)));
         allControllers.add(cc.acceptNewAgent("HistoryE", new Expert(3)));
         allControllers.add(cc.acceptNewAgent("ArtsE", new Expert(4)));
         allControllers.add(cc.acceptNewAgent("PlacesE", new Expert(5)));
-        allControllers.add(cc.acceptNewAgent("RandomE", new Expert(7)));
         allControllers.add(cc.acceptNewAgent("AllE", new Expert(6)));
-        allControllers.add(cc.acceptNewAgent("VariableE", new Expert(0)));
+        allControllers.add(cc.acceptNewAgent("RandomE", new Expert(7)));
+        allControllers.add(cc.acceptNewAgent("CommonE", new Expert(8)));
     }
 
     public static void addPlayers() throws StaleProxyException {
@@ -97,7 +98,7 @@ public class Run {
     }
 
     public static void startExperts() throws StaleProxyException {
-        for(int i =0 ; i< allControllers.size();i++) {
+        for(int i =0 ; i< MasterMenu.num_experts;i++) {
             if(MasterMenu.checkboxes_selected.get(i)){
                 allControllers.get(i).start();
             }
