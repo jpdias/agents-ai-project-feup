@@ -1,7 +1,7 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2014.9.20)  12 DEC 2014 20:32
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2014.9.20)  13 DEC 2014 15:46
 entering extended mode
 **jade.tex
-(D:\FEUP_4Ano\1Semestre\AIAD\report\jade.tex
+(D:\Projects\IdeaProjects\AIAD\report\jade.tex
 LaTeX2e <2011/06/27>
 Babel <v3.8m> and hyphenation patterns for english, afrikaans, ancientgreek, ar
 abic, armenian, assamese, basque, bengali, bokmal, bulgarian, catalan, coptic, 
@@ -13,7 +13,7 @@ german-x-2013-05-26, nynorsk, oriya, panjabi, pinyin, polish, portuguese, roman
 ian, russian, sanskrit, serbian, slovak, slovenian, spanish, swedish, swissgerm
 an, tamil, telugu, turkish, turkmen, ukenglish, ukrainian, uppersorbian, usengl
 ishmax, welsh, loaded.
-(D:\FEUP_4Ano\1Semestre\AIAD\report\llncs.cls
+(D:\Projects\IdeaProjects\AIAD\report\llncs.cls
 Document Class: llncs 2013/09/27 v2.18 
  LaTeX document class for Lecture Notes in Computer Science
 ("C:\Program Files\MiKTeX 2.9\tex\latex\base\article.cls"
@@ -81,10 +81,10 @@ Package: multicol 2011/06/27 v1.7a multicolumn formatting (FMi)
 \colbreak@box=\box51
 \multicol@sort@counter=\count95
 )
-(D:\FEUP_4Ano\1Semestre\AIAD\report\aliascnt.sty
+(D:\Projects\IdeaProjects\AIAD\report\aliascnt.sty
 Package: aliascnt 2009/09/08 v1.3 Alias counter (HO)
 
-(D:\FEUP_4Ano\1Semestre\AIAD\report\remreset.sty))
+(D:\Projects\IdeaProjects\AIAD\report\remreset.sty))
 \c@chapter=\count96
 LaTeX Font Info:    Redeclaring math symbol \Gamma on input line 362.
 LaTeX Font Info:    Redeclaring math symbol \Delta on input line 363.
@@ -878,7 +878,14 @@ File: tikzlibrarypatterns.code.tex 2008/01/15 v3.0.0 (rcs-revision 1.2)
 (C:\Users\JP\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\libraries\pgflibrarypat
 terns.code.tex
 File: pgflibrarypatterns.code.tex 2008/03/03 v3.0.0 (rcs-revision 1.13)
-)) (D:\FEUP_4Ano\1Semestre\AIAD\report\jade.aux)
+)) (D:\Projects\IdeaProjects\AIAD\report\jade.aux
+
+LaTeX Warning: Label `vary' multiply defined.
+
+
+LaTeX Warning: Label `vary' multiply defined.
+
+)
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 10.
 LaTeX Font Info:    ... okay on input line 10.
 LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 10.
@@ -891,8 +898,7 @@ LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 10.
 LaTeX Font Info:    ... okay on input line 10.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 10.
 LaTeX Font Info:    ... okay on input line 10.
-
-(C:\Users\JP\AppData\Roaming\MiKTeX\2.9\tex\context\base\supp-pdf.mkii
+ (C:\Users\JP\AppData\Roaming\MiKTeX\2.9\tex\context\base\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count153
 \scratchdimen=\dimen187
@@ -980,7 +986,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 53--60
  []
 
 [2] [3]
-Overfull \hbox (0.76593pt too wide) in paragraph at lines 123--124
+Overfull \hbox (0.76593pt too wide) in paragraph at lines 124--125
 \OT1/cmr/m/n/10 in sec-tion 3.1[]), en-sur-ing all the syn-chronous com-mu-ni-c
 a-tion needs be-tween agents
  []
@@ -988,43 +994,52 @@ a-tion needs be-tween agents
 <arch.png, id=23, 759.58781pt x 505.89pt>
 File: arch.png Graphic file (type png)
  <use arch.png>
-Package pdftex.def Info: arch.png used on input line 127.
+Package pdftex.def Info: arch.png used on input line 128.
 (pdftex.def)             Requested size: 277.69987pt x 184.95322pt.
 
 <fipa.png, id=24, 499.11469pt x 299.61937pt>
 File: fipa.png Graphic file (type png)
  <use fipa.png>
-Package pdftex.def Info: fipa.png used on input line 140.
+Package pdftex.def Info: fipa.png used on input line 141.
 (pdftex.def)             Requested size: 277.69987pt x 166.70674pt.
  [4]
 <sequence.png, id=32, 502.87875pt x 216.05719pt>
 File: sequence.png Graphic file (type png)
  <use sequence.png>
-Package pdftex.def Info: sequence.png used on input line 160.
+Package pdftex.def Info: sequence.png used on input line 161.
 (pdftex.def)             Requested size: 347.12354pt x 149.13895pt.
- [5 <D:/FEUP_4Ano/1Semestre/AIAD/report/arch.png>] [6 <D:/FEUP_4Ano/1Semestre/A
-IAD/report/fipa.png> <D:/FEUP_4Ano/1Semestre/AIAD/report/sequence.png>]
+ [5 <D:/Projects/IdeaProjects/AIAD/report/arch.png>] [6 <D:/Projects/IdeaProjec
+ts/AIAD/report/fipa.png> <D:/Projects/IdeaProjects/AIAD/report/sequence.png>] [
+7]
 
-LaTeX Warning: Reference `twoexpert' on page 7 undefined on input line 176.
+LaTeX Warning: Reference `varycommon' on page 8 undefined on input line 332.
 
-[7] [8] [9] [10]
-Underfull \hbox (badness 10000) in paragraph at lines 325--326
+[8] [9] [10]
+
+LaTeX Warning: Reference `varyAllCommon' on page 11 undefined on input line 357
+.
+
+[11]
+Underfull \hbox (badness 10000) in paragraph at lines 384--385
 []\OT1/cmr/m/n/9 Vaucher J. and Ncho A., JADE Tu-to-rial and Primer,
  []
 
-[11] (D:\FEUP_4Ano\1Semestre\AIAD\report\jade.aux)
+[12] (D:\Projects\IdeaProjects\AIAD\report\jade.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
 
 LaTeX Warning: There were undefined references.
 
+
+LaTeX Warning: There were multiply-defined labels.
+
  ) 
 Here is how much of TeX's memory you used:
- 21842 strings out of 493921
- 554163 string characters out of 3147291
- 726237 words of memory out of 3000000
- 24762 multiletter control sequences out of 15000+200000
+ 21867 strings out of 493921
+ 554661 string characters out of 3147291
+ 724237 words of memory out of 3000000
+ 24787 multiletter control sequences out of 15000+200000
  8448 words of font info for 30 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
  62i,19n,76p,928b,2213s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1040,9 +1055,9 @@ m/cmr7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr9.pfb
 ram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Program File
 s/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti9.pfb><C:/Program Files/MiKTeX 
 2.9/fonts/type1/public/amsfonts/cm/cmtt9.pfb>
-Output written on jade.pdf (11 pages, 237370 bytes).
+Output written on jade.pdf (12 pages, 245144 bytes).
 PDF statistics:
- 98 PDF objects out of 1000 (max. 8388607)
+ 101 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  36 words of extra memory for PDF output out of 10000 (max. 10000000)
 

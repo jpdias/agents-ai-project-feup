@@ -78,6 +78,7 @@ and seven experts as information sources:
 \item \textit{All} Expert: Have 100\% expertise in all thematics.
 \item \textit{Random} Expert: Have a 25\% probability of answer correctly (the number of possible answer is 4).
 \item \textit{Variable} Expert: Have a change to get right all the first 50 questions or less.
+\item \textit{Common} Expert: Have 50\% knowledge over each thematic.
 \end{itemize}
 
 \subsection{Trust algorithms}\label{Trust}
@@ -163,22 +164,172 @@ With this, it was established a interaction protocol between the agents in the s
 \end{figure}
 
 
-\section{Experiments}\label{sec:Experiments}
+\section{Experiments \& Discussion}\label{sec:Experiments}
 
 To test the system developed it was carried out some experiences, with the various agents developed and presented in section \ref{sec:Agents}, analysing the different results obtained. All tests are made using the same question database that contains five question per thematic. Additionally its used a fixed number of questions, in the case, 200 questions.
 
 To certify that all communication are been done correctly it was made various experiences with one single expert with 100\% knowledge in all thematics.
 
-The experiments carried give us a perspective of the behaviour of the different algorithms showed in section \ref{Trust}. So for a better capacity of presenting more precise conclusions we made four experiments with different experts:
+The experiments carried give us a perspective of the behaviour of the different algorithms used as showed in section \ref{Trust}. So for a better capacity of presenting more precise conclusions we made a set of experiments with different groups of experts.
+
+Between all the experiments done, the results of the different players changes during the different tries for each experiment, more specifically:
 \begin{itemize}
-\item For testing the whole system we started all the information sources, including a random expert to see the performance of different algorithms handle it. The results are showed in chart \ref{allexpertsrandom}.
-\item For testing the system without the need to the randomness handling we started only the experts with real knowledge. The results are showed in chart \ref{allexperts}.
-\item For testing the dealing with lack of information we only started two experts.  The results are showed in chart \ref{twoexpert}.
-\item For testing the dealing with lack of information and randomness we only started two experts and the random expert.  The results are showed in chart \ref{twoexpertsrandom}.
-\item For testing the behaviour of the different trust algorithms in the players with variable behaviour in information sources we used the \textit{Variable} expert and the five experts with normal and stable knowledge. The results are showed in chart \ref{vary}.
+\item \textit{FIRE} player varies in the maximum of 21 answers;
+\item \textit{DUMMY} player varies in the maximum of 16 answers;
+\item \textit{RANDOM} player varies in the maximum of 18 answers;
+\item \textit{BETA} player varies in the maximum of 11 answers;
+
 \end{itemize}
 
-All the players results verify a variance of 10 questions wrong/right with the exception to the \textit{RANDOM} player and the \textit{BETA} which verify much bigger variances with approximately to the 50 questions right/wrong.
+\begin{figure}
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+    ybar,
+    enlargelimits=0.15,
+    legend style={at={(0.5,-0.15)},
+      anchor=north,legend columns=-1},
+    ylabel={Number of Questions},
+    symbolic x coords={DUMMY,RANDOM,FIRE,BETA},
+    xtick=data,
+    nodes near coords,
+    nodes near coords align={vertical},
+    ]
+\addplot [pattern = dots] coordinates {(DUMMY,184) (RANDOM,80) (FIRE,187) (BETA,73)};
+\addplot [pattern = north west lines] coordinates {(DUMMY,16) (RANDOM,120) (FIRE,13) (BETA,127)};
+\legend{Right,Wrong}
+\end{axis}
+\end{tikzpicture}
+\caption{Experience with five experts with 100\% knowledge by question theme.}
+\label{allexperts}
+\end{figure}
+
+In the first experiment, Experiment \ref{allexperts}, we used one expert per thematic, each one with 100\% knowledge in each theme. This is our first experiment used to analyse the behaviour of the different players in a environment were the information by thematic is distributed among different sources. The results pointed out by the experiment showed us that the algorithms that use classification of experts by thematic, like FIRE or DUMMY, given us better results than the algorithms that just analyse the number of questions answered right or wrong by expert like the BETA algorithm.
+
+\begin{figure}
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+    ybar,
+    enlargelimits=0.15,
+    legend style={at={(0.5,-0.15)},
+      anchor=north,legend columns=-1},
+    ylabel={Number of Questions},
+    symbolic x coords={DUMMY,RANDOM,FIRE,BETA},
+    xtick=data,
+    nodes near coords,
+    nodes near coords align={vertical},
+    ]
+\addplot [pattern = dots] coordinates {(DUMMY,167) (RANDOM,67) (FIRE,183) (BETA,76)};
+\addplot [pattern = north west lines] coordinates {(DUMMY,33) (RANDOM,133) (FIRE,17) (BETA,124)};
+\legend{Right,Wrong}
+\end{axis}
+\end{tikzpicture}
+\caption{Experience with five experts with 100\% knowledge by question theme and one random expert.}
+\label{allexpertsrandom}
+\end{figure}
+
+The Experiment \ref{allexpertsrandom} showed us that even when we add a random expert to the Experiment \ref{allexperts}, the results given by the player have small changes only.
+
+\begin{figure}
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+    ybar,
+    enlargelimits=0.15,
+    legend style={at={(0.5,-0.15)},
+      anchor=north,legend columns=-1},
+    ylabel={Number of Questions},
+    symbolic x coords={DUMMY,RANDOM,FIRE,BETA},
+    xtick=data,
+    nodes near coords,
+    nodes near coords align={vertical},
+    ]
+\addplot [pattern = dots] coordinates {(DUMMY,122) (RANDOM,89) (FIRE,124) (BETA,73)};
+\addplot [pattern = north west lines] coordinates {(DUMMY,78) (RANDOM,111) (FIRE,76) (BETA,127)};
+\legend{Right,Wrong}
+\end{axis}
+\end{tikzpicture}
+\caption{Experience with two experts with 100\% knowledge in the thematics Places and History}
+\label{twoexperts}
+\end{figure}
+
+In the Experiment \ref{twoexperts} we verified how that the lack of knowledge is manage by the different players. The results showed us that the percentage of right answers decreases due to this lack of knowledge, since the players are limited too the only two players that exists in the environment.
+
+\begin{figure}
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+    ybar,
+    enlargelimits=0.15,
+    legend style={at={(0.5,-0.15)},
+      anchor=north,legend columns=-1},
+    ylabel={Number of Questions},
+    symbolic x coords={DUMMY,RANDOM,FIRE,BETA},
+    xtick=data,
+    nodes near coords,
+    nodes near coords align={vertical},
+    ]
+\addplot [pattern = dots] coordinates {(DUMMY,122) (RANDOM,62) (FIRE,118) (BETA,77)};
+\addplot [pattern = north west lines] coordinates {(DUMMY,78) (RANDOM,138) (FIRE,82) (BETA,123)};
+\legend{Right,Wrong}
+\end{axis}
+\end{tikzpicture}
+\caption{Experience with two experts with 100\% knowledge in the thematics Places and History, plus a random expert.}
+\label{twoexpertsrandom}
+\end{figure}
+
+The Experiment \ref{twoexpertsrandom} we verified how that the lack of knowledge is manage by the different players in a environment where exists a random information source. The results showed us that the percentage of right answers decreases as showed in experiment \ref{twoexperts} and the addition of the random expert don't affect significantly the results.
+
+\begin{figure}
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+    ybar,
+    enlargelimits=0.15,
+    legend style={at={(0.5,-0.15)},
+      anchor=north,legend columns=-1},
+    ylabel={Number of Questions},
+    symbolic x coords={DUMMY,RANDOM,FIRE,BETA},
+    xtick=data,
+    nodes near coords,
+    nodes near coords align={vertical},
+    ]
+\addplot [pattern = dots] coordinates {(DUMMY,160) (RANDOM,80) (FIRE,168) (BETA,87)};
+\addplot [pattern = north west lines] coordinates {(DUMMY,40) (RANDOM,120) (FIRE,32) (BETA,113)};
+\legend{Right,Wrong}
+\end{axis}
+\end{tikzpicture}
+\caption{Experience with five experts with 100\% knowledge in each thematic and the \textit{Variable} expert}
+\label{vary}
+\end{figure}
+
+At the Experiment \ref{vary} we add the \textit{Variable} expert.  This experiment give us a perspective of the way that the different algorithms used adapt to the addition of a variable information source. Namely, this showed that the \textit{FIRE} and \textit{DUMMY} algorithms are more slow to adapt to this changes and, on the other hand, the \textit{BETA} adapts more quickly to this change.
+
+\begin{figure}
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+    ybar,
+    enlargelimits=0.15,
+    legend style={at={(0.5,-0.15)},
+      anchor=north,legend columns=-1},
+    ylabel={Number of Questions},
+    symbolic x coords={DUMMY,RANDOM,FIRE,BETA},
+    xtick=data,
+    nodes near coords,
+    nodes near coords align={vertical},
+    ]
+\addplot [pattern = dots] coordinates {(DUMMY,67) (RANDOM,61) (FIRE,72) (BETA,64)};
+\addplot [pattern = north west lines] coordinates {(DUMMY,133) (RANDOM,139) (FIRE,128) (BETA,136)};
+\legend{Right,Wrong}
+\end{axis}
+\end{tikzpicture}
+\caption{Experience with the \textit{Variable} expert and the \textit{Common} expert.}
+\label{varycommon}
+\end{figure}
+
+The Experiment \ref{varycommon} adds to the environment the \textit{Variable} and the \textit{Common} experts only. This showed us how the different players manage the existence of one information source with only a percentage of knowledge(\textit{Common}) and one with variable knowledge in the execution runtime. At the end of the experiment we verified that the \textit{BETA} adapts well to this environment given similar results to the other experiments and the other players suffer more in this environment given worst results than in the other experiments.
  
 \begin{figure}
 \centering
@@ -194,108 +345,16 @@ All the players results verify a variance of 10 questions wrong/right with the e
     nodes near coords,
     nodes near coords align={vertical},
     ]
-\addplot [pattern = dots] coordinates {(DUMMY,178) (RANDOM,72) (FIRE,179) (BETA,79)};
-\addplot [pattern = north west lines] coordinates {(DUMMY,22) (RANDOM,128) (FIRE,21) (BETA,121)};
+\addplot [pattern = dots] coordinates {(DUMMY,190) (RANDOM,113) (FIRE,200) (BETA,198)};
+\addplot [pattern = north west lines] coordinates {(DUMMY,10) (RANDOM,87) (FIRE,0) (BETA,2)};
 \legend{Right,Wrong}
 \end{axis}
 \end{tikzpicture}
-\caption{Experience with five experts with 100\% knowledge by question theme and one random expert.}
-\label{allexpertsrandom}
+\caption{Experience with the \textit{Variable} expert, \textit{Common} expert and the \textit{All} expert.}
+\label{varyAllCommon}
 \end{figure}
 
-
-\begin{figure}
-\centering
-\begin{tikzpicture}
-\begin{axis}[
-    ybar,
-    enlargelimits=0.15,
-    legend style={at={(0.5,-0.15)},
-      anchor=north,legend columns=-1},
-    ylabel={Number of Questions},
-    symbolic x coords={DUMMY,RANDOM,FIRE,BETA},
-    xtick=data,
-    nodes near coords,
-    nodes near coords align={vertical},
-    ]
-\addplot [pattern = dots]  coordinates {(DUMMY,178) (RANDOM,74) (FIRE,184) (BETA,70)};
-\addplot [pattern = north west lines] coordinates {(DUMMY,22) (RANDOM,126) (FIRE,16) (BETA,120)};
-\legend{Right,Wrong}
-\end{axis}
-\end{tikzpicture}
-\caption{Experience with five experts with 100\% knowledge by question theme.}
-\label{allexperts}
-\end{figure}
-
-\begin{figure}
-\centering
-\begin{tikzpicture}
-\begin{axis}[
-    ybar,
-    enlargelimits=0.15,
-    legend style={at={(0.5,-0.15)},
-      anchor=north,legend columns=-1},
-    ylabel={Number of Questions},
-    symbolic x coords={DUMMY,RANDOM,FIRE,BETA},
-    xtick=data,
-    nodes near coords,
-    nodes near coords align={vertical},
-    ]
-\addplot [pattern = dots] coordinates {(DUMMY,119) (RANDOM,80) (FIRE,121) (BETA,86)};
-\addplot [pattern = north west lines] coordinates {(DUMMY,81) (RANDOM,120) (FIRE,79) (BETA,114)};
-\legend{Right,Wrong}
-\end{axis}
-\end{tikzpicture}
-\caption{Experience with two experts with 100\% knowledge in the thematics Places and History, plus a random expert.}
-\label{twoexpertsrandom}
-\end{figure}
-
-
-\begin{figure}
-\centering
-\begin{tikzpicture}
-\begin{axis}[
-    ybar,
-    enlargelimits=0.15,
-    legend style={at={(0.5,-0.15)},
-      anchor=north,legend columns=-1},
-    ylabel={Number of Questions},
-    symbolic x coords={DUMMY,RANDOM,FIRE,BETA},
-    xtick=data,
-    nodes near coords,
-    nodes near coords align={vertical},
-    ]
-\addplot [pattern = dots] coordinates {(DUMMY,117) (RANDOM,91) (FIRE,117) (BETA,81)};
-\addplot [pattern = north west lines] coordinates {(DUMMY,83) (RANDOM,109) (FIRE,83) (BETA,119)};
-\legend{Right,Wrong}
-\end{axis}
-\end{tikzpicture}
-\caption{Experience with two experts with 100\% knowledge in the thematics Places and History}
-\label{twoexperts}
-\end{figure}
-
-\begin{figure}
-\centering
-\begin{tikzpicture}
-\begin{axis}[
-    ybar,
-    enlargelimits=0.15,
-    legend style={at={(0.5,-0.15)},
-      anchor=north,legend columns=-1},
-    ylabel={Number of Questions},
-    symbolic x coords={DUMMY,RANDOM,FIRE,BETA},
-    xtick=data,
-    nodes near coords,
-    nodes near coords align={vertical},
-    ]
-\addplot [pattern = dots] coordinates {(DUMMY,167) (RANDOM,69) (FIRE,188) (BETA,48)};
-\addplot [pattern = north west lines] coordinates {(DUMMY,33) (RANDOM,131) (FIRE,12) (BETA,152)};
-\legend{Right,Wrong}
-\end{axis}
-\end{tikzpicture}
-\caption{Experience with five experts with 100\% knowledge in each thematic and the \textit{Variable} expert}
-\label{vary}
-\end{figure}
+In the environment showed in Experiment \ref{varyAllCommon} we show how quickly the players find the best information source, in the case, the \textit{All} expert. We verified that the \textit{FIRE} algorithm give us excellent results since it have a opinion source. By other side if the \textit{FIRE} couldn't use the opinion, it will have a behaviour similar to the \textit{DUMMY}. This show us that the \textit{BETA} algorithm is one of the best adapted algorithm to this case, since its rapidly find the best and more trustful information source.
 
 \section{Conclusion}\label{sec:Conclusion}
 
