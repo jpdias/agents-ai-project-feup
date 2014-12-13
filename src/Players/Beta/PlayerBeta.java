@@ -56,7 +56,7 @@ public class PlayerBeta extends SimpleBehaviour
         double new_alpha = (2*alpha*total_rights)/((beta+2)*(total_rights+total_wrongs+2)+2*alpha);
         double new_beta = (2*alpha*total_wrongs)/((beta+2)*(total_rights+total_wrongs+2)+2*alpha);
         //System.out.println("new_alpha="+new_alpha+"----------------------------new_beta="+new_beta);
-        return calculateReputationValue(new_alpha, new_beta)*calculateReputationValue(alpha, beta);
+        return calculateReputationValue(new_alpha, new_beta);
     }
 
     public int betaTrustModel(){
