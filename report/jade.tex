@@ -33,7 +33,7 @@ The purpose of this work is to examine the efficiency of different trust algorit
 \item To ensure all the communication between agents.
 \end{itemize}
 
-In this paper we start presenting the chosen scenario at section \ref{Scenario description}, followed by identification of the agents in the systems and algorithms used in section \ref{Specification}. Next we show in section \ref{sec:Development} the used tools and the interaction protocol. Finally we present all the experiments realized at section \ref{sec:Experiments} and a conclusion in section \ref{sec:Conclusion}.
+In this paper we start presenting the chosen scenario at section \ref{Scenario description}, followed by identification of the agents in the systems and algorithms used in section \ref{sec:Specification}. Next we show in section \ref{sec:Development} the used tools and the interaction protocol. Finally we present all the experiments realized at section \ref{sec:Experiments} and a conclusion in section \ref{sec:Conclusion}.
 
 \subsection{Scenario description}\label{Scenario description}
 
@@ -68,7 +68,7 @@ Specifying each one of the agents present in the system, we have four players:
 \item Player \textit{FIRE}: The player uses the \textit{FIRE} algorithm \cite{Fire}. Specified in section \ref{Trust}.
 \item Player \textit{BETA}: The player uses the \textit{BETA} algorithm \cite{Beta}. Specified in section \ref{Trust}.
 \end{itemize}
-and seven experts as information sources:
+and nine experts as information sources:
 \begin{itemize}
 \item \textit{Sports} Expert: Have 100\% expertise in questions about Sports.
 \item \textit{History} Expert: Have 100\% expertise in questions about History.
@@ -354,7 +354,7 @@ The Experiment \ref{varycommon} adds to the environment the \textit{Variable} an
 \label{varyAllCommon}
 \end{figure}
 
-In the environment showed in Experiment \ref{varyAllCommon} we show how quickly the players find the best information source, in the case, the \textit{All} expert. We verified that the \textit{FIRE} algorithm give us excellent results since it have a opinion source. By other side if the \textit{FIRE} couldn't use the opinion, it will have a behaviour similar to the \textit{DUMMY}. This show us that the \textit{BETA} algorithm is one of the best adapted algorithm to this case, since its rapidly find the best and more trustful information source.
+In the environment used in Experiment \ref{varyAllCommon} we show how quickly the players find the best information source, in the case, the \textit{All} expert. We verified that the \textit{FIRE} algorithm give us excellent results since it have a opinion source. By other side if the \textit{FIRE} couldn't use the opinion, it will have a behaviour similar to the \textit{DUMMY}. This show us that the \textit{BETA} algorithm is one of the best adapted algorithm to this case, since its rapidly find the best and more trustful information source.
 
 \section{Conclusion}\label{sec:Conclusion}
 

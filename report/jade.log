@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2014.9.20)  13 DEC 2014 15:46
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2014.9.20)  13 DEC 2014 23:43
 entering extended mode
 **jade.tex
 (D:\Projects\IdeaProjects\AIAD\report\jade.tex
@@ -878,14 +878,7 @@ File: tikzlibrarypatterns.code.tex 2008/01/15 v3.0.0 (rcs-revision 1.2)
 (C:\Users\JP\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\libraries\pgflibrarypat
 terns.code.tex
 File: pgflibrarypatterns.code.tex 2008/03/03 v3.0.0 (rcs-revision 1.13)
-)) (D:\Projects\IdeaProjects\AIAD\report\jade.aux
-
-LaTeX Warning: Label `vary' multiply defined.
-
-
-LaTeX Warning: Label `vary' multiply defined.
-
-)
+)) (D:\Projects\IdeaProjects\AIAD\report\jade.aux)
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 10.
 LaTeX Font Info:    ... okay on input line 10.
 LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 10.
@@ -898,7 +891,8 @@ LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 10.
 LaTeX Font Info:    ... okay on input line 10.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 10.
 LaTeX Font Info:    ... okay on input line 10.
- (C:\Users\JP\AppData\Roaming\MiKTeX\2.9\tex\context\base\supp-pdf.mkii
+
+(C:\Users\JP\AppData\Roaming\MiKTeX\2.9\tex\context\base\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count153
 \scratchdimen=\dimen187
@@ -929,9 +923,6 @@ LaTeX Font Info:    No file OMScmtt.fd. on input line 16.
 LaTeX Font Warning: Font shape `OMS/cmtt/m/n' undefined
 (Font)              using `OMS/cmsy/m/n' instead
 (Font)              for symbol `textbraceleft' on input line 16.
-
-
-LaTeX Warning: Reference `Specification' on page 1 undefined on input line 36.
 
 [1
 
@@ -1010,16 +1001,8 @@ Package pdftex.def Info: sequence.png used on input line 161.
 (pdftex.def)             Requested size: 347.12354pt x 149.13895pt.
  [5 <D:/Projects/IdeaProjects/AIAD/report/arch.png>] [6 <D:/Projects/IdeaProjec
 ts/AIAD/report/fipa.png> <D:/Projects/IdeaProjects/AIAD/report/sequence.png>] [
-7]
-
-LaTeX Warning: Reference `varycommon' on page 8 undefined on input line 332.
-
-[8] [9] [10]
-
-LaTeX Warning: Reference `varyAllCommon' on page 11 undefined on input line 357
-.
-
-[11]
+7] [8]
+[9] [10] [11]
 Underfull \hbox (badness 10000) in paragraph at lines 384--385
 []\OT1/cmr/m/n/9 Vaucher J. and Ncho A., JADE Tu-to-rial and Primer,
  []
@@ -1028,18 +1011,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 384--385
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-
-LaTeX Warning: There were undefined references.
-
-
-LaTeX Warning: There were multiply-defined labels.
-
  ) 
 Here is how much of TeX's memory you used:
- 21867 strings out of 493921
- 554661 string characters out of 3147291
+ 21866 strings out of 493921
+ 554646 string characters out of 3147291
  724237 words of memory out of 3000000
- 24787 multiletter control sequences out of 15000+200000
+ 24786 multiletter control sequences out of 15000+200000
  8448 words of font info for 30 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
  62i,19n,76p,928b,2213s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1055,7 +1032,7 @@ m/cmr7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr9.pfb
 ram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Program File
 s/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti9.pfb><C:/Program Files/MiKTeX 
 2.9/fonts/type1/public/amsfonts/cm/cmtt9.pfb>
-Output written on jade.pdf (12 pages, 245144 bytes).
+Output written on jade.pdf (12 pages, 245108 bytes).
 PDF statistics:
  101 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
