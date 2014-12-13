@@ -106,14 +106,10 @@ public class PlayerFIRExperience extends SimpleBehaviour {
 
             ACLMessage optionNeed = myAgent.blockingReceive();
 
-
-
-                ACLMessage reply = optionNeed.createReply();
-                reply.setPerformative(ACLMessage.INFORM );
-                reply.setContent(phaseTwo.toString());
-                myAgent.send(reply);
-
-
+            ACLMessage reply = optionNeed.createReply();
+            reply.setPerformative(ACLMessage.INFORM );
+            reply.setContent(phaseTwo.toString());
+            myAgent.send(reply);
 
             AID expertAID = phaseTwo.firstElement().expert; //selected agent for answer
 
