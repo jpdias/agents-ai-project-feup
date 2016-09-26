@@ -1,6 +1,8 @@
-# README #
+# ROADSIDE #
 
-This README would normally document whatever steps are necessary to get your application up and running.
+T**R**ust In Information Sources on a C**O**mpetitive and **D**i**s**tr**i**bute**d** **E**nvironment
+
+
 
 ### What is this repository for? ###
 
